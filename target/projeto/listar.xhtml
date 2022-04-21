@@ -10,31 +10,6 @@
 <h:body>
 	<h3>Lista de Alunos</h3>
 	<h:form id="formListaAluno">
-		<p:messages id="messages" closable="true" />
-	
-		<p:dataTable id="tabelaAluno" widgetVar="tabelaAluno"  
-			value="#{controladorAluno.listar()}" var="aluno">
-			<p:column headerText="Nome">
-				<p:outputLabel value="#{aluno.nome}"/>
-			</p:column>
-			<p:column headerText="CPF">
-				<p:outputLabel value="#{aluno.CPF}" />
-			</p:column>
-			<p:column headerText="Remover">
-				<p:commandLink value="Remover" 
-					update="formListaAluno:tabelaAluno, formListaAluno:messages"
-					action="#{controladorAluno.remover(aluno)}">
-					<p:confirm header="Confirmação" 
-						message="Você quer mesmo remover #{aluno.nome}?" 
-						icon="pi pi-exclamation-triangle"/>
-				</p:commandLink>
-			</p:column>
-		</p:dataTable>
-		
-		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
-            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
-            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
-        </p:confirmDialog>
 	</h:form>
 </h:body>
 </html>
