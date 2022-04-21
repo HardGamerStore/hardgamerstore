@@ -1,0 +1,4 @@
+com/facol/projeto/dados/RepositorioAluno.class
+com/facol/projeto/negocio/ControladorAluno.class
+com/facol/projeto/modelo/Aluno.class
+com/facol/projeto/dados/AlunoBancoDeDados.class
