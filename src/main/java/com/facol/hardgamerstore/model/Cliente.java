@@ -1,32 +1,25 @@
 package com.facol.hardgamerstore.model;
 
-public class Cliente extends Pessoa {
+import java.util.List;
 
-	private int id;
-	private String carrinho;
-	private Pedido pedido;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "cliente")
+public class Cliente extends Pessoa {
 	
+	private List<Pedido> pedidos;
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	
-	
-	public Pedido getPedido() {
-		return pedido;
-	}
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getCarrinho() {
-		return carrinho;
-	}
-	public void setCarrinho(String carrinho) {
-		this.carrinho = carrinho;
-	}
-	
-	
+
 	
 }

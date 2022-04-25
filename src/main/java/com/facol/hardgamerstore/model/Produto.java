@@ -1,19 +1,31 @@
 package com.facol.hardgamerstore.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 public class Produto {
 
-	private int id,estoque;
-	private String descricao, unidadeDeMedida,caracteristica;
-	private double precoDeCusto,precoDeVenda;
-    private enum categoria{exemplo}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(nullable = false)
+	private int estoque;
+	@Column(length = 200, nullable = false)
+	private String descricao;
+	@Column(length = 20, nullable = false)
+	private String unidadeDeMedida;
+	@Column(length = 50, nullable = false)
+	private String caracteristica;
+	@Column(nullable = false)
+	private double precoDeCusto;
+	@Column(nullable = false)
+	private double precoDeVenda;
+	@Column(length = 50, nullable = false)
+    private String categoria;
 	
-    
-    
-    
-    
-    
-    
-    public int getId() {
+	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
@@ -54,10 +66,13 @@ public class Produto {
 	}
 	public void setPrecoDeVenda(double precoDeVenda) {
 		this.precoDeVenda = precoDeVenda;
-	};
-	
-	
-	
-    
-    
+	}
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+
 }

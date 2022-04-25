@@ -1,12 +1,36 @@
 package com.facol.hardgamerstore.model;
 
-import java.sql.Date;
+import java.util.Date;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class Pessoa {
-
-	private String nome, cpf, endereco, email, telefone, login, senha;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(length = 200, nullable = false)
+	private String nome;
+	@Column(length = 14, nullable = false)
+	private String cpf;
+	@Column(length = 50, nullable = false)
+	private String endereco;
+	@Column(length = 80, nullable = false)
+	private String email;
+	@Column(length = 50, nullable = false)
+	private String telefone;
+	@Column(length = 50, nullable = false)
+	private String login;
+	@Column(length = 18, nullable = false)
+	private String senha;
+	@Column(nullable = false)
 	private char genero;
-
+	@Column(nullable = false)
 	private Date dataDeNascimento;
 
 	public String getNome() {
@@ -80,9 +104,5 @@ public abstract class Pessoa {
 	public void setDataDeNascimento(Date dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
-	
-	
-	
-	
 	
 }
