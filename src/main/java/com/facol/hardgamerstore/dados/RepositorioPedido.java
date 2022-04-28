@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Pedido;
-import com.facol.hardgamerstore.modelo.Produto;
 
 public class RepositorioPedido {
 
@@ -16,28 +15,28 @@ public class RepositorioPedido {
 	@PersistenceContext(name = "hardgamerstore")
 	private EntityManager entityManager;
 	
-	public void criar(Produto produto) {
-		this.entityManager.persist(produto);
+	public void criar(Pedido pedido) {
+		this.entityManager.persist(pedido);
 	}
 	
-	public void alterar(Produto produto) {
-		this.entityManager.merge(produto);
+	public void alterar(Pedido pedido) {
+		this.entityManager.merge(pedido);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Produto> listar() {
-		List<Produto> result = null;
-		Query query = this.entityManager.createQuery("FROM Cliente entity");
+	public List<Pedido> listar() {
+		List<Pedido> result = null;
+		Query query = this.entityManager.createQuery("FROM Pedido entity");
 		result = query.getResultList();
 		
 		return result;
 	}
 
 	
-	public void remover(Produto produto) {
-		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");
-		query.setParameter("id", produto.getId());
-		Produto removeProduto = (Produto)query.getSingleResult();
+	public void remover(Pedido pedido) {
+		Query query = this.entityManager.createQuery("FROM Pedido entity WHERE entity.id = :id");
+		query.setParameter("id", pedido.getId());
+		Pedido removeProduto = (Pedido)query.getSingleResult();
 		this.entityManager.remove(removeProduto);
 	}
 	

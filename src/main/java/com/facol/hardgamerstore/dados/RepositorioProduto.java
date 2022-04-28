@@ -35,7 +35,7 @@ public class RepositorioProduto {
 
 	
 	public void remover(Produto produto) {
-		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");
+		Query query = this.entityManager.createQuery("FROM Produto entity WHERE entity.id = :id");
 		query.setParameter("id", produto.getId());
 		Produto removeProduto = (Produto)query.getSingleResult();
 		this.entityManager.remove(removeProduto);
