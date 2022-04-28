@@ -1,55 +1,50 @@
 package com.facol.hardgamerstore.dados;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.facol.hardgamerstore.model.Pedido;
-import com.facol.hardgamerstore.model.Produto;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
+import com.facol.hardgamerstore.modelo.Produto;
 
-public class RepositorioProduto extends RepositorioGenerico<Produto>{
+public class RepositorioProduto {
 	
-	@Override
-	public void salvar(Produto produto) {
-		this.salvar(produto);
+
+	
+	
+	@PersistenceContext(name = "hardgamerstore")
+	private EntityManager entityManager;
+	
+	public void criar(Produto produto) {
+		this.entityManager.persist(produto);
 	}
 	
-	@Override
-	public Produto buscar(long id) {
-		return this.buscar(id);
-	}
-	
-	@Override
-	public void excluir(Produto produto) {
-		this.excluir(produto);
-	}
-	
-	@Override
 	public void alterar(Produto produto) {
-		this.alterar(produto);
+		this.entityManager.merge(produto);
 	}
 	
-	@Override
+	@SuppressWarnings("unchecked")
 	public List<Produto> listar() {
-		return this.listar();
+		List<Produto> result = null;
+		Query query = this.entityManager.createQuery("FROM Cliente entity");
+		result = query.getResultList();
+		
+		return result;
+	}
+
+	
+	public void remover(Produto produto) {
+		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");
+		query.setParameter("id", produto.getId());
+		Produto removeProduto = (Produto)query.getSingleResult();
+		this.entityManager.remove(removeProduto);
 	}
 	
 	
 	
 	
-	
-	
-	
-	
-	
+
 	
 	
 	

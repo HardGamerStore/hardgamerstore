@@ -2,8 +2,8 @@ package com.facol.hardgamerstore.modelo;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "cliente")

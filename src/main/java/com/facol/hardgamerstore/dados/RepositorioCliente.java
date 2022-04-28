@@ -2,11 +2,11 @@ package com.facol.hardgamerstore.dados;
 
 import java.util.List;
 
-import com.facol.hardgamerstore.modelo.Cliente;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.Query;
+import com.facol.hardgamerstore.modelo.Cliente;
 
 public class RepositorioCliente {
 	

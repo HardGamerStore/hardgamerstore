@@ -1,47 +1,61 @@
 package com.facol.hardgamerstore.dados;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.facol.hardgamerstore.model.Pedido;
-import com.facol.hardgamerstore.model.Produto;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
+import com.facol.hardgamerstore.modelo.Pedido;
+import com.facol.hardgamerstore.modelo.Produto;
 
-public class RepositorioPedido extends RepositorioGenerico<Pedido> {
+public class RepositorioPedido {
 
 	
-	@Override
-	public void salvar(Pedido pedido) {
-		this.salvar(pedido);
+	
+	@PersistenceContext(name = "hardgamerstore")
+	private EntityManager entityManager;
+	
+	public void criar(Produto produto) {
+		this.entityManager.persist(produto);
 	}
 	
-	@Override
-	public Pedido buscar(long id) {
-		return this.buscar(id);
+	public void alterar(Produto produto) {
+		this.entityManager.merge(produto);
 	}
 	
-	@Override
-	public void excluir(Pedido pedido) {
-		this.excluir(pedido);
+	@SuppressWarnings("unchecked")
+	public List<Produto> listar() {
+		List<Produto> result = null;
+		Query query = this.entityManager.createQuery("FROM Cliente entity");
+		result = query.getResultList();
+		
+		return result;
+	}
+
+	
+	public void remover(Produto produto) {
+		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");
+		query.setParameter("id", produto.getId());
+		Produto removeProduto = (Produto)query.getSingleResult();
+		this.entityManager.remove(removeProduto);
 	}
 	
-	@Override
-	public void alterar(Pedido pedido) {
-		this.alterar(pedido);
-	}
 	
-	@Override
-	public List<Pedido> listar() {
-		return this.listar();
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*public ArrayList<Pedido> listarTodos() {
 		EntityTransaction tran = null;

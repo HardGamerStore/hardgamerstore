@@ -10,12 +10,12 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<jta-data-source>java:/MySqlDS</jta-data-source>
-		
+
 		<class>com.facol.projeto.modelo.Cliente</class>
 		<class>com.facol.projeto.modelo.Funcionario</class>
 		<class>com.facol.projeto.modelo.Pedido</class>
 		<class>com.facol.projeto.modelo.Produto</class>
-		
+
 
 		<properties>
 			<property name="hibernate.dialect"
