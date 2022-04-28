@@ -40,15 +40,6 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-		<dependency>
-    		<groupId>org.hibernate</groupId>
-   			<artifactId>hibernate-core</artifactId>
-    		<version>6.0.0.Final</version>
-    		<type>pom</type>
-		</dependency>
-		
 
 
 		<dependency>
@@ -69,6 +60,12 @@
 			<artifactId>ejb-api</artifactId>
 			<version>3.0</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
 		</dependency>
 
 	</dependencies>

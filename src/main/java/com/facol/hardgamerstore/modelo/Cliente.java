@@ -1,4 +1,4 @@
-package com.facol.hardgamerstore.model;
+package com.facol.hardgamerstore.modelo;
 
 import java.util.List;
 

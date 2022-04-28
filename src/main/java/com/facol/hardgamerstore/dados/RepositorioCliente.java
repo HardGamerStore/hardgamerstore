@@ -2,33 +2,38 @@ package com.facol.hardgamerstore.dados;
 
 import java.util.List;
 
-import com.facol.hardgamerstore.model.Cliente;
+import com.facol.hardgamerstore.modelo.Cliente;
 
-public class RepositorioCliente extends RepositorioGenerico<Cliente> {
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
+
+public class RepositorioCliente {
 	
-	@Override
-	public void salvar(Cliente cliente) {
-		this.salvar(cliente);
+	@PersistenceContext(name = "hardgamerstore")
+	private EntityManager entityManager;
+	
+	public void criar(Cliente cliente) {
+		this.entityManager.persist(cliente);
 	}
 	
-	@Override
-	public Cliente buscar(long id) {
-		return this.buscar(id);
-	}
-	
-	@Override
-	public void excluir(Cliente cliente) {
-		this.excluir(cliente);
-	}
-	
-	@Override
 	public void alterar(Cliente cliente) {
-		this.alterar(cliente);
+		this.entityManager.merge(cliente);
 	}
 	
-	@Override
+	@SuppressWarnings("unchecked")
 	public List<Cliente> listar() {
-		return this.listar();
+		List<Cliente> result = null;
+		Query query = this.entityManager.createQuery("FROM Cliente entity");
+		result = query.getResultList();
+		
+		return result;
 	}
 
+	public void remover(Cliente cliente) {
+		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");
+		query.setParameter("id", cliente.getId());
+		Cliente removeCliente = (Cliente)query.getSingleResult();
+		this.entityManager.remove(removeCliente);
+	}
 }

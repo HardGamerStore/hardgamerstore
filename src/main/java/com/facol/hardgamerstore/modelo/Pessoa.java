@@ -1,4 +1,4 @@
-package com.facol.hardgamerstore.model;
+package com.facol.hardgamerstore.modelo;
 
 import java.util.Date;
 
@@ -39,6 +39,14 @@ public abstract class Pessoa {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCpf() {

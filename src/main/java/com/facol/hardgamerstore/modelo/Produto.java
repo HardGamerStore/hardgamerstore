@@ -1,4 +1,4 @@
-package com.facol.hardgamerstore.model;
+package com.facol.hardgamerstore.modelo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

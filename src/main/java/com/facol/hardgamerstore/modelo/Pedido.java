@@ -1,6 +1,7 @@
-package com.facol.hardgamerstore.model;
+package com.facol.hardgamerstore.modelo;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -12,10 +13,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 public class Pedido {
-
-	//@JoinColumn é responsável por fazer o atributo se juntar a coluna de outra tabela (funciona como FK).
-	//ManyToOne é responsável por dizer que é um relacionamento de vários para um.
-	//OneToMany é responsável por dizer que é um relacionamento de um para vários.
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +31,13 @@ public class Pedido {
 	@Column(length = 50, nullable = false)
 	private String meioDePagamento;
 	@Column(nullable = false)
-	private Date dataDeGeracaoDepedido;
+	private LocalDate dataPedido = LocalDate.now();
+	public LocalDate getDataPedido() {
+		return dataPedido;
+	}
+	public void setDataPedido(LocalDate dataPedido) {
+		this.dataPedido = dataPedido;
+	}
 	@Column(length = 200, nullable = false)
 	private String observacoes;
 	
@@ -68,12 +71,7 @@ public class Pedido {
 	public void setMeioDePagamento(String meioDePagamento) {
 		this.meioDePagamento = meioDePagamento;
 	}
-	public Date getDataDeGeracaoDepedido() {
-		return dataDeGeracaoDepedido;
-	}
-	public void setDataDeGeracaoDepedido(Date dataDeGeracaoDepedido) {
-		this.dataDeGeracaoDepedido = dataDeGeracaoDepedido;
-	}
+
 	public String getObservacoes() {
 		return observacoes;
 	}

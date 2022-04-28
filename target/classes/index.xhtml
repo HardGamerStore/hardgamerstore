@@ -4,14 +4,20 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>Hello World JSF 2.3</title>
+	<title>Hard Gamer Store</title>
 </h:head>
 
 <h:body>
-	<h:form>
-		<br />
-
-
-	</h:form>
+	<h1>Bem-vindo ao site da loja!</h1>
+	<h2>fique a vontade para explorar nossos produtos! :)</h2>
+        <p:menubar>
+            <f:facet name="options">
+                <div class="ui-input-icon-left p-mr-2"  >
+                    <i class="pi pi-fw pi-search"/>
+                    <p:inputText placeholder="Search"/>
+                </div>
+                <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
+            </f:facet>
+        </p:menubar>
 </h:body>
 </html>
