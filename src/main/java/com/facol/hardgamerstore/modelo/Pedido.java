@@ -3,25 +3,28 @@ package com.facol.hardgamerstore.modelo;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "pedido")
 public class Pedido {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@ManyToOne
 	@JoinColumn(name = "produtoId")
-    @ManyToOne
 	private Produto produtoId;
-	
+	@ManyToOne
 	@JoinColumn(name = "clienteId")
-    @OneToMany
 	private Cliente clienteId;
 	
 	@Column(nullable = false)
@@ -30,12 +33,6 @@ public class Pedido {
 	private String meioDePagamento;
 	@Column(nullable = false)
 	private LocalDate dataPedido = LocalDate.now();
-	public LocalDate getDataPedido() {
-		return dataPedido;
-	}
-	public void setDataPedido(LocalDate dataPedido) {
-		this.dataPedido = dataPedido;
-	}
 	@Column(length = 200, nullable = false)
 	private String observacoes;
 	
@@ -45,6 +42,14 @@ public class Pedido {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public LocalDate getDataPedido() {
+		return dataPedido;
+	}
+	public void setDataPedido(LocalDate dataPedido) {
+		this.dataPedido = dataPedido;
+	}
+	
 	public Produto getProdutoId() {
 		return produtoId;
 	}

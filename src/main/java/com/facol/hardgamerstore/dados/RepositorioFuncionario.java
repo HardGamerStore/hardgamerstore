@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Funcionario;
+import com.facol.hardgamerstore.modelo.Pedido;
 
 public class RepositorioFuncionario {
 
@@ -22,6 +23,12 @@ public class RepositorioFuncionario {
 	public void alterar(Funcionario funcionario) {
 		this.entityManager.merge(funcionario);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Pedido> listaPedidos() {
+		 return (List<Pedido>) entityManager.createQuery("FROM Pedido entity WHERE entity.id = :id").getResultList();
+		 }
+
 	
 	@SuppressWarnings("unchecked")
 	public List<Funcionario> listar() {

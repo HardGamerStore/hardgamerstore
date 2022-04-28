@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Cliente;
+import com.facol.hardgamerstore.modelo.Pedido;
 
 public class RepositorioCliente {
 	
@@ -29,6 +30,11 @@ public class RepositorioCliente {
 		
 		return result;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Pedido> listaPedidosPorCliente() {
+		 return (List<Pedido>) this.entityManager.createQuery("FROM Pedido entity WHERE entity.idCliente = :idCliente").getResultList();
+		 }
 
 	public void remover(Cliente cliente) {
 		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");

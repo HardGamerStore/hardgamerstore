@@ -10,18 +10,12 @@ import javax.persistence.MappedSuperclass;
 public abstract class Pessoa {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Column(length = 200, nullable = false)
 	private String nome;
 	@Column(length = 14, nullable = false)
 	private String cpf;
-	@Column(length = 50, nullable = false)
-	private String endereco;
-	@Column(length = 80, nullable = false)
-	private String email;
-	@Column(length = 50, nullable = false)
-	private String telefone;
 	@Column(length = 50, nullable = false)
 	private String login;
 	@Column(length = 18, nullable = false)
@@ -53,30 +47,6 @@ public abstract class Pessoa {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public String getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
 	}
 
 	public String getLogin() {

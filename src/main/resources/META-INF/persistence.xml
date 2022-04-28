@@ -11,10 +11,10 @@
 
 		<jta-data-source>java:/MySqlDS</jta-data-source>
 
-		<class>com.facol.projeto.modelo.Cliente</class>
-		<class>com.facol.projeto.modelo.Funcionario</class>
-		<class>com.facol.projeto.modelo.Pedido</class>
-		<class>com.facol.projeto.modelo.Produto</class>
+		<class>com.facol.hardgamerstore.modelo.Cliente</class>
+		<class>com.facol.hardgamerstore.modelo.Funcionario</class>
+		<class>com.facol.hardgamerstore.modelo.Produto</class>
+		<class>com.facol.hardgamerstore.modelo.Pedido</class>
 
 
 		<properties>
