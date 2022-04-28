@@ -31,7 +31,7 @@ public abstract class Pessoa {
 	@Column(nullable = false)
 	private char genero;
 	@Column(nullable = false)
-	private Date dataDeNascimento;
+	private String dataDeNascimento;
 
 	public String getNome() {
 		return nome;
@@ -97,11 +97,11 @@ public abstract class Pessoa {
 		this.genero = genero;
 	}
 
-	public Date getDataDeNascimento() {
+	public String getDataDeNascimento() {
 		return dataDeNascimento;
 	}
 
-	public void setDataDeNascimento(Date dataDeNascimento) {
+	public void setDataDeNascimento(String dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
 	

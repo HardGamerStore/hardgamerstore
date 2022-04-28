@@ -44,12 +44,6 @@ public class Pedido {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public List getCarrinho() {
-		return carrinho;
-	}
-	public void setCarrinho(List carrinho) {
-		this.carrinho = carrinho;
-	}
 	public Produto getProdutoId() {
 		return produtoId;
 	}
