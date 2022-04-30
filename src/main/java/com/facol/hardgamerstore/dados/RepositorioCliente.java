@@ -10,35 +10,36 @@ import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Pedido;
 
 public class RepositorioCliente extends RepositorioGenerico<Cliente> {
-	
+
 	@PersistenceContext(name = "hardgamerstore")
 	private EntityManager entityManager;
-	
+
 	@Override
 	public EntityManager getEntityManager() {
 		return this.entityManager;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Cliente> listar() {
 		List<Cliente> result = null;
 		Query query = this.entityManager.createQuery("FROM Cliente entity");
 		result = query.getResultList();
-		
+
 		return result;
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Pedido> listaPedidosPorCliente() {
-		 return (List<Pedido>) this.entityManager.createQuery("FROM Pedido entity WHERE entity.idCliente = :idCliente").getResultList();
-		 }
+	public List<Pedido> listaPedidosPorCliente(int idCliente) {
+		Query query = this.entityManager.createQuery("FROM Pedido entity WHERE entity.idCliente = :idCliente");
+		query.setParameter("idCliente", idCliente);
+		return (List<Pedido>) query.getResultList();
+	}
 
 	public void remover(Cliente cliente) {
 		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");
 		query.setParameter("id", cliente.getId());
-		Cliente removeCliente = (Cliente)query.getSingleResult();
+		Cliente removeCliente = (Cliente) query.getSingleResult();
 		this.entityManager.remove(removeCliente);
 	}
-
 
 }
