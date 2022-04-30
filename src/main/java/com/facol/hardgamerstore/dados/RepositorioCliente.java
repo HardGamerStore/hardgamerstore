@@ -9,17 +9,14 @@ import javax.persistence.Query;
 import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Pedido;
 
-public class RepositorioCliente {
+public class RepositorioCliente extends RepositorioGenerico<Cliente> {
 	
 	@PersistenceContext(name = "hardgamerstore")
 	private EntityManager entityManager;
 	
-	public void criar(Cliente cliente) {
-		this.entityManager.persist(cliente);
-	}
-	
-	public void alterar(Cliente cliente) {
-		this.entityManager.merge(cliente);
+	@Override
+	public EntityManager getEntityManager() {
+		return this.entityManager;
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -42,4 +39,6 @@ public class RepositorioCliente {
 		Cliente removeCliente = (Cliente)query.getSingleResult();
 		this.entityManager.remove(removeCliente);
 	}
+
+
 }
