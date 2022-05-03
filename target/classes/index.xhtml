@@ -10,14 +10,13 @@
 <h:body>
 	<h1>Bem-vindo ao site da loja!</h1>
 	<h2>fique a vontade para explorar nossos produtos! :)</h2>
-        <p:menubar>
-            <f:facet name="options">
-                <div class="ui-input-icon-left p-mr-2"  >
-                    <i class="pi pi-fw pi-search"/>
-                    <p:inputText placeholder="Search"/>
-                </div>
-                <p:button value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info"/>
-            </f:facet>
-        </p:menubar>
+	
+	<h:form>
+	<p:commandButton action="#{controladorAcoes.listaDeClientes()}" ajax="false" 
+			value="Ir pra lista de clientes" /><br/><br/>
+		<p:commandButton action="#{controladorAcoes.formCadastroDeClientes()}" ajax="false" 
+			value="Cadastrar clientes" />	
+	</h:form>
+
 </h:body>
 </html>

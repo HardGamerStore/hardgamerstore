@@ -2,6 +2,7 @@ package com.facol.hardgamerstore.dados;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -9,8 +10,14 @@ import javax.persistence.Query;
 import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Pedido;
 
+<<<<<<< Updated upstream
 public class RepositorioCliente {
 	
+=======
+@Stateless
+public class RepositorioCliente extends RepositorioGenerico<Cliente> {
+
+>>>>>>> Stashed changes
 	@PersistenceContext(name = "hardgamerstore")
 	private EntityManager entityManager;
 	

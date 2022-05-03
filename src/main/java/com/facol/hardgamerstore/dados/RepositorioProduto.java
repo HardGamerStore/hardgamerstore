@@ -8,17 +8,14 @@ import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Produto;
 
-public class RepositorioProduto {
-	
+public class RepositorioProduto extends RepositorioGenerico<Produto> {
+
 	@PersistenceContext(name = "hardgamerstore")
 	private EntityManager entityManager;
-	
-	public void criar(Produto produto) {
-		this.entityManager.persist(produto);
-	}
-	
-	public void alterar(Produto produto) {
-		this.entityManager.merge(produto);
+
+	@Override
+	public EntityManager getEntityManager() {
+		return this.entityManager;
 	}
 	
 	@SuppressWarnings("unchecked")

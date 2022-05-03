@@ -6,23 +6,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
-import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Funcionario;
 import com.facol.hardgamerstore.modelo.Pedido;
 
-public class RepositorioFuncionario {
+public class RepositorioFuncionario extends RepositorioGenerico<Funcionario> {
 
 	@PersistenceContext(name = "hardgamerstore")
 	private EntityManager entityManager;
-	
-	public void criar(Funcionario funcionario) {
-		this.entityManager.persist(funcionario);
+
+	@Override
+	public EntityManager getEntityManager() {
+		return this.entityManager;
 	}
-	
-	public void alterar(Funcionario funcionario) {
-		this.entityManager.merge(funcionario);
-	}
+
 	
 	@SuppressWarnings("unchecked")
 	public List<Pedido> listaPedidos() {

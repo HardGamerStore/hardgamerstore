@@ -21,7 +21,7 @@ public abstract class Pessoa {
 	@Column(length = 18, nullable = false)
 	private String senha;
 	@Column(nullable = false)
-	private char genero;
+	private String genero;
 	@Column(nullable = false)
 	private String dataDeNascimento;
 
@@ -65,11 +65,11 @@ public abstract class Pessoa {
 		this.senha = senha;
 	}
 
-	public char getGenero() {
+	public String getGenero() {
 		return genero;
 	}
 
-	public void setGenero(char genero) {
+	public void setGenero(String genero) {
 		this.genero = genero;
 	}
 

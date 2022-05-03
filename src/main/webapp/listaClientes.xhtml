@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+	<title>Clientes cadastrados</title>
+</h:head>
+
+<h:body>
+	<h3>Lista de Clientes</h3>
+	
+	<h:form id="formListaCliente">
+		<p:messages id="messages" closable="true" />
+	
+	<div class = "alinhar">
+		<p:dataTable id="tabelaCliente" widgetVar="tabelaCliente"  
+			value="#{controladorCliente.clientes}" var="cliente" paginator="true" rows="10">
+			
+			<p:column headerText="Nome">
+				<p:outputLabel>
+            		<p:outputLabel value="#{cliente.nome}"/>
+        		</p:outputLabel>
+			</p:column>
+			
+			<p:column headerText="CPF">
+				<p:outputLabel>
+            		<p:outputLabel value="#{cliente.cpf}"/>
+        		</p:outputLabel>
+			</p:column>
+			
+			<p:column headerText="Data de nascimento">
+				<p:outputLabel>
+            		<p:outputLabel value="#{cliente.dataDeNascimento}"/>
+        		</p:outputLabel>
+			</p:column>
+			
+			<p:column headerText="E-mail">
+				<p:outputLabel>
+            		<p:outputLabel value="#{cliente.email}"/>
+        		</p:outputLabel>
+			</p:column>
+			
+			<p:column headerText="Telefone">
+				<p:outputLabel>
+            		<p:outputLabel value="#{cliente.telefone}"/>
+        		</p:outputLabel>
+			</p:column>
+			
+			<p:column headerText="Sexo">
+				<p:outputLabel>
+            		<p:outputLabel value="#{cliente.genero}"/>
+        		</p:outputLabel>
+			</p:column>
+			
+
+		</p:dataTable>
+	
+	</div>
+		
+		<br/><br/><br/>
+		
+		<p:commandButton action="#{controladorAcoes.voltarParaHome()}" ajax="false" 
+			value="Ir para home" />
+		
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog>
+	</h:form>
+</h:body>
+
+<style type="text/css">
+
+.alinhar {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+</style>
+</html>
