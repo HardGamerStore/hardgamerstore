@@ -1,5 +1,6 @@
 package com.facol.hardgamerstore.modelo;
 
+import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
