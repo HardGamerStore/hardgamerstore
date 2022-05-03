@@ -8,7 +8,7 @@ import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Produto;
 
-public class RepositorioProduto extends RepositorioGenerico<Produto> {
+public class RepositorioProduto extends RepositorioGenerico<Produto>{
 
 	@PersistenceContext(name = "hardgamerstore")
 	private EntityManager entityManager;
