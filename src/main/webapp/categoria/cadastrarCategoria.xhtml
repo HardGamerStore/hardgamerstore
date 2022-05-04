@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+	<title>cdastro de categoria</title>
+</h:head>
+
+<h:body>
+
+<h2> CADASTRO DE CATEGORIAS </h2>
+
+	<h:form id="form">
+		
+		
+		<br />
+		<p:outputLabel value="DESCRIÇÃO: " />
+		<p:inputText value="#{controladorCategoria.nome}" />
+		
+		
+		<br /><br />
+		<p:commandButton action="#{controladorCategoria.salvar()}" ajax="false" 
+			 value="Salvar categoria" />
+		
+	</h:form>
+</h:body>
+</html>

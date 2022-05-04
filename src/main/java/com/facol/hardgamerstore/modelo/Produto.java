@@ -6,7 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.facol.testProduto.modelo.Categoria;
 
 @Entity
 @Table(name = "produto")
@@ -27,8 +31,9 @@ public class Produto {
 	private double precoDeCusto;
 	@Column(nullable = false)
 	private double precoDeVenda;
-	@Column(length = 50, nullable = false)
-    private String categoria;
+	@ManyToOne
+	@JoinColumn(name = "categoriaId")
+	private Categoria categoriaId;
 	
 	public int getId() {
 		return id;
@@ -72,12 +77,13 @@ public class Produto {
 	public void setPrecoDeVenda(double precoDeVenda) {
 		this.precoDeVenda = precoDeVenda;
 	}
-	public String getCategoria() {
-		return categoria;
+	public Categoria getCategoriaId() {
+		return categoriaId;
 	}
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setCategoriaId(Categoria categoriaId) {
+		this.categoriaId = categoriaId;
 	}
+	
 
 
 }
