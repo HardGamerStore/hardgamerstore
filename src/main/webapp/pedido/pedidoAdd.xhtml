@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+	<title>Cadastro de Pedidos</title>
+	<h1>Cadastro de Pedidos</h1>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		Adição de Pedidos
+		
+		
+	 <h5>Descrição do Pedido</h5>
+    <span class="ui-float-label">
+       <p:inputText id="descricao" value="#{controladorPedido.observacoes}" required= "true"/>
+       <p:outputLabel for="@previous" value="Observacoes"/>
+   </span>
+   
+    <h5>Meio De Pagamento</h5>
+    <span class="ui-float-label">
+       <p:inputText id="meioDePagamento" value="#{controladorPedido.meioDePagamento}" required= "true"/>
+       <p:outputLabel for="@previous" value="Meio De Pagamento"/>
+   </span>
+   
+    <h5>produto</h5>
+    <span class="ui-float-label">
+       <p:inputText id="produtoId" value="#{controladorPedido.produtoId}" required= "true"/>
+       <p:outputLabel for="@previous" value="produtoId"/>
+   </span>
+   
+    <h5>ClienteId</h5>
+    <span class="ui-float-label">
+       <p:inputText id="clienteId" value="#{controladorPedido.produtoId}" required= "true"/>
+       <p:outputLabel for="@previous" value="clienteId"/>
+   </span>
+   
+   <h5>Sub Total</h5>
+    <span class="ui-float-label">
+       <p:inputText id="subtotal" value="#{controladorPedido.unidadeDeMedida}" required= "true"/>
+       <p:outputLabel for="@previous" value="subTotal"/>
+   </span>
+   
+  
+		
+		<br /><br />
+		<p:commandButton action="#{controladorPedido.cadastrar()}" ajax="false" 
+			value="Cadastrar" />
+		
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" >
+
+<h:head>
+	<title>Cadastro de Produtos</title>
+	<h1>Cadastro de Produtos</h1>
+</h:head>
+
+<h:body>
+	<h:form id="form">
+		Adição de Produtos
+		
+		
+	 <h5>Descrição do Produto</h5>
+    <span class="ui-float-label">
+       <p:inputText id="descriccao" value="#{controladorProduto.descricao}" required ="true"/>
+       <p:outputLabel for="@previous" value="Descrição"/>
+   </span>
+   
+    <h5>Caracteristica</h5>
+    <span class="ui-float-label">
+       <p:inputText id="caracteristica" value="#{controladorProduto.caracteristica}" required ="true"/>
+       <p:outputLabel for="@previous" value="Caracteristica"  />
+   </span>
+   
+    <h5>Categoria</h5>
+    <span class="ui-float-label">
+       <p:inputText id="categoria" value="#{controladorProduto.categoria}" required ="true"/>
+       <p:outputLabel for="@previous" value="Categoria"   />
+   </span>
+   
+    <h5>Unidade de medida</h5>
+    <span class="ui-float-label">
+       <p:inputText id="float-input4" value="#{controladorProduto.unidadeDeMedida}"  required ="true"/>
+       <p:outputLabel for="@previous" value="Unidade De Medida"/>
+   </span>
+   
+   <h5>Estoque</h5>
+    <span class="ui-float-label">
+       <p:inputText id="unidadeDeMedida" value="#{controladorProduto.estoque}"  required ="true"/>
+       <p:outputLabel for="@previous" value="Preço de Custo"/>
+   </span>
+   
+   <h5>Preço de Custo</h5>
+    <span class="ui-float-label">
+       <p:inputText id="precoDeCusto" value="#{controladorProduto.precoDeCusto}"  required ="true"/>
+       <p:outputLabel for="@previous" value="Preço de Custo"/>
+   </span>
+   
+     <h5>Preço de Venda</h5>
+    <span class="ui-float-label">
+       <p:inputText id="precoDeVenda" value="#{controladorProduto.precoDeVenda}" required ="true"/>
+       <p:outputLabel for="@previous" value="Preço de Venda"/>
+   </span>
+		
+		<br /><br />
+		<p:commandButton action="#{controladorProduto.cadastrar()}" ajax="false" 
+			value="Cadastrar" />
+		
+	</h:form>
+</h:body>
+</html>

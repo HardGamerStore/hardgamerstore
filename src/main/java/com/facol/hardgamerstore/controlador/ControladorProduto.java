@@ -32,7 +32,7 @@ public class ControladorProduto implements Serializable {
 		produto.setEstoque(estoque);
 		produto.setPrecoDeCusto(precoDeCusto);
 		produto.setPrecoDeVenda(precoDeVenda);
-		produto.setCategoria(categoria);
+		produto.setCategoriaId(categoria);
 		produto.setCaracteristica(caracteristica);		
 		produto.setDescricao(this.descricao);
 		produto.setUnidadeDeMedida(this.unidadeDeMedida);

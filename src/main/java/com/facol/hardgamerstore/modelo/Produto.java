@@ -81,8 +81,8 @@ public class Produto {
 	public Categoria getCategoriaId() {
 		return categoriaId;
 	}
-	public void setCategoriaId(Categoria categoriaId) {
-		this.categoriaId = categoriaId;
+	public void setCategoriaId(Categoria categoria) {
+		this.categoriaId = categoria;
 	}
 	
 
