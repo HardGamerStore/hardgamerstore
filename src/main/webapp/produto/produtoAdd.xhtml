@@ -27,7 +27,9 @@
    
     <h5>Categoria</h5>
     <span class="ui-float-label">
-       <p:inputText id="categoria" value="#{controladorProduto.categoria}" required ="true"/>
+    	<p:selectOneMenu value="#{controladorProduto.categoriaId}">
+    		<f:selectItems value="#{controladorProduto.listarCategorias()}" />
+    	</p:selectOneMenu>
        <p:outputLabel for="@previous" value="Categoria"   />
    </span>
    

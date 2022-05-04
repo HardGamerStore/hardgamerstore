@@ -40,4 +40,11 @@ public class CategoriaRepositorio {
 		Categoria removeCategoria = (Categoria)query.getSingleResult();
 		this.entityManager.remove(removeCategoria);
 	}
+
+	public Categoria encontrarPorId(Long categoriaId) {
+		Query query = this.entityManager.createQuery("FROM Categoria entity WHERE entity.id = :id");
+		query.setParameter("id", categoriaId);
+		Categoria categoria = (Categoria)query.getSingleResult();
+		return categoria;
+	}
 }

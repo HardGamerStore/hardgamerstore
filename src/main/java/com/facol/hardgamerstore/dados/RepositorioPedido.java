@@ -2,12 +2,14 @@ package com.facol.hardgamerstore.dados;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Pedido;
 
+@Stateless
 public class RepositorioPedido extends RepositorioGenerico<Pedido> {
 
 	@PersistenceContext(name = "hardgamerstore")
