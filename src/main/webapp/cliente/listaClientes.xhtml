@@ -15,7 +15,7 @@
 	
 	<div class = "alinhar">
 		<p:dataTable id="tabelaCliente" widgetVar="tabelaCliente"  
-			value="#{controladorCliente.clientes}" var="cliente" paginator="true" rows="10">
+			value="#{controladorCliente.listar()}" var="cliente" paginator="true" rows="10">
 			
 			<p:column headerText="Nome">
 				<p:outputLabel>

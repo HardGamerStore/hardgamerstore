@@ -57,13 +57,14 @@ public class ControladorCliente implements Serializable {
 		cliente.setLogradouro(this.logradouro);
 		
 		this.repCliente.criar(cliente);
-		this.listar();
+		//this.listar();
 		return "listaClientes.xhtml";
 		
 	}
 	
-	public void listar(){
+	public List<Cliente> listar(){
 		this.clientes = repCliente.listar();
+		return clientes;
 	}
 	
 	public String remover(Cliente cliente) {
@@ -74,6 +75,8 @@ public class ControladorCliente implements Serializable {
 		return null;
 	}
 	
+
+
 	public List<Cliente> getClientes() {
 		return clientes;
 	}

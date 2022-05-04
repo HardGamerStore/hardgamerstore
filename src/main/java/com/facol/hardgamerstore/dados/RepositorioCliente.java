@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.primefaces.component.message.Message;
+
 import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Pedido;
 
@@ -23,11 +25,16 @@ public class RepositorioCliente extends RepositorioGenerico<Cliente> {
 
 	@SuppressWarnings("unchecked")
 	public List<Cliente> listar() {
+		try {
 		List<Cliente> result = null;
 		Query query = this.entityManager.createQuery("FROM Cliente entity");
 		result = query.getResultList();
-
+		
 		return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
