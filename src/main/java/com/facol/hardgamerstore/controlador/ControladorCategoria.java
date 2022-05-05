@@ -10,7 +10,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.facol.hardgamerstore.dados.CategoriaRepositorio;
+import com.facol.hardgamerstore.dados.RepositorioCategoria;
 import com.facol.hardgamerstore.modelo.Categoria;
 
 @SuppressWarnings("serial")
@@ -20,7 +20,7 @@ public class ControladorCategoria implements Serializable {
 
 
 	@Inject
-	private CategoriaRepositorio catRep;
+	private RepositorioCategoria catRep;
 	
 	private List<Categoria> categorias;
 	
@@ -55,12 +55,12 @@ public class ControladorCategoria implements Serializable {
 	
 	
 	//GET AND SETS
-	public CategoriaRepositorio getCatRep() {
+	public RepositorioCategoria getCatRep() {
 		return catRep;
 	}
 
 
-	public void setCatRep(CategoriaRepositorio catRep) {
+	public void setCatRep(RepositorioCategoria catRep) {
 		this.catRep = catRep;
 	}
 

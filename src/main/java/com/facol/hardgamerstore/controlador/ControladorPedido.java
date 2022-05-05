@@ -14,6 +14,7 @@ import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Pedido;
 import com.facol.hardgamerstore.modelo.Produto;
 
+@SuppressWarnings("serial")
 @SessionScoped
 @Named("controladorPedido")
 public class ControladorPedido implements Serializable {

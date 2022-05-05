@@ -12,8 +12,7 @@
 	
 	<h:form id="formListaCliente">
 		<p:messages id="messages" closable="true" />
-	
-	<div class = "alinhar">
+		
 		<p:dataTable id="tabelaCliente" widgetVar="tabelaCliente"  
 			value="#{controladorCliente.listar()}" var="cliente" paginator="true" rows="10">
 			
@@ -53,14 +52,19 @@
         		</p:outputLabel>
 			</p:column>
 			
+			<p:column headerText="Gerenciamento">
+				<p:menuButton value="Ações" buttonStyleClass="ui-button-outlined">
+					<p:menuitem value="Alterar" update="formListaCliente:tabelaCliente" action="#{controladorCliente.encontrarPorId(cliente.id)}" icon="pi pi-refresh"/>
+					<p:menuitem value="Deletar" update="formListaCliente:tabelaCliente" action="#{controladorCliente.remover(cliente)}" icon="pi pi-times"/>
+				</p:menuButton>
+			</p:column>
+			
 
 		</p:dataTable>
-	
-	</div>
 		
 		<br/><br/><br/>
 		
-		<p:commandButton action="#{controladorAcoes.voltarParaHome()}" ajax="false" 
+		<p:commandButton action="/index.xhtml" ajax="false" 
 			value="Ir para home" />
 		
 		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">

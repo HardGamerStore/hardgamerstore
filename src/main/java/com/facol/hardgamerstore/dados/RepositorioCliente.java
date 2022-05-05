@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.primefaces.component.message.Message;
-
 import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Pedido;
 
@@ -35,6 +33,14 @@ public class RepositorioCliente extends RepositorioGenerico<Cliente> {
 			e.printStackTrace();
 			throw e;
 		}
+	}
+	
+	public Cliente encontrarPorId(Long clienteId) {
+		Query query = this.entityManager.createQuery("FROM Cliente entity WHERE entity.id = :id");
+		query.setParameter("id", clienteId);
+		Cliente cliente = (Cliente)query.getSingleResult();
+		return cliente;
+		
 	}
 
 	@SuppressWarnings("unchecked")

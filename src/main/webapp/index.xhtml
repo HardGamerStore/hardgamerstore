@@ -13,9 +13,9 @@
 	<h2>fique a vontade para explorar nossos produtos! :)</h2>
 	
 	<h:form>
-	<p:commandButton action="#{controladorAcoes.listaDeClientes()}" ajax="false" 
+	<p:commandButton action="#{controladorCliente.listaDeClientes()}" ajax="false" 
 			value="Ir pra lista de clientes" /><br/><br/>
-		<p:commandButton action="#{controladorAcoes.formCadastroDeClientes()}" ajax="false" 
+		<p:commandButton action="/cliente/formCadastroCliente" ajax="false" 
 			value="Cadastrar clientes" />	
 	</h:form>
 </h:body>

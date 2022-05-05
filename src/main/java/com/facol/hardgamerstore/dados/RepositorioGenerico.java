@@ -11,6 +11,7 @@ public abstract class RepositorioGenerico <T> {
 	}
 	
 	public void alterar(T t) {
+		
 		this.getEntityManager().merge(t);
 	}
 	

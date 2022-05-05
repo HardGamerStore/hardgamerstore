@@ -11,12 +11,13 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.facol.hardgamerstore.dados.CategoriaRepositorio;
+import com.facol.hardgamerstore.dados.RepositorioCategoria;
 import com.facol.hardgamerstore.dados.RepositorioProduto;
 import com.facol.hardgamerstore.modelo.Categoria;
 import com.facol.hardgamerstore.modelo.Produto;
 
 
+@SuppressWarnings("serial")
 @SessionScoped
 @Named("controladorProduto")
 public class ControladorProduto implements Serializable {
@@ -24,7 +25,7 @@ public class ControladorProduto implements Serializable {
 	@Inject
 	private RepositorioProduto repProduto;
 	@Inject
-	private CategoriaRepositorio catRepositorio;
+	private RepositorioCategoria catRepositorio;
 
 	private List<Produto> produtos;
 	

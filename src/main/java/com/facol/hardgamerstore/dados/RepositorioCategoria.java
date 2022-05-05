@@ -11,7 +11,7 @@ import javax.persistence.Query;
 import com.facol.hardgamerstore.modelo.Categoria;
 
 @Stateless
-public class CategoriaRepositorio {
+public class RepositorioCategoria {
 
 	@PersistenceContext(name = "testeProduto")
 	private EntityManager entityManager;

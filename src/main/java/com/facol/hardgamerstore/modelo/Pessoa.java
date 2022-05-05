@@ -11,7 +11,7 @@ public abstract class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	@Column(length = 200, nullable = false)
 	private String nome;
 	@Column(length = 14, nullable = false)
@@ -33,11 +33,11 @@ public abstract class Pessoa {
 		this.nome = nome;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
