@@ -20,10 +20,17 @@
 			<p:column headerText="Meio De Pagamento">
 				<p:outputLabel value="#{pedido.meioDePagamento}" />
 			</p:column>
+			<p:column headerText="PedidoID">
+				<p:outputLabel value="#{pedido.pedidoId}" />
+			</p:column>
 			
+			<p:column headerText="ClienteID">
+				<p:outputLabel value="#{pedido.clienteId}" />
+			</p:column>
 			
-			
-			
+			<p:column headerText="SubTotal">
+				<p:outputLabel value="#{pedido.subtotal}" />
+			</p:column>
 			
 			<p:column headerText="Remover">
 				<p:commandLink value="Remover" 

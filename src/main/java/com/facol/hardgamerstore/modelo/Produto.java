@@ -15,7 +15,7 @@ public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	@Column(nullable = false)
 	private int estoque;
 	@Column(length = 200, nullable = false)

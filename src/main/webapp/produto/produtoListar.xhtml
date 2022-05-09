@@ -24,8 +24,18 @@
 			<p:column headerText="Caracteristica">
 				<p:outputLabel value="#{produto.caracteristica}" />
 			</p:column>
-			
-			
+				<p:column headerText="Unidade de Medida">
+				<p:outputLabel value="#{produto.unidadeDeMedida}" />
+			</p:column>
+				<p:column headerText="Estoque">
+				<p:outputLabel value="#{produto.estoque}" />
+			</p:column>
+				<p:column headerText="Preço de Custo">
+				<p:outputLabel value="#{produto.precoDeCusto}" />
+			</p:column>
+				<p:column headerText="Preço de Venda">
+				<p:outputLabel value="#{produto.precoDeVenda}" />
+			</p:column>
 			
 			<p:column headerText="Remover">
 				<p:commandLink value="Remover" 
