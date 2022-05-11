@@ -5,14 +5,14 @@
 
 <h:head>
 	<title>Cadastro de Pedidos</title>
-	<h1>Cadastro de Pedidos</h1>
+	<h1 id = "titulo">Cadastro de Pedidos</h1>
 </h:head>
 
 <h:body>
 	<h:form id="form">
-		Adição de Pedidos
+		<p:graphicImage id="logo" library="imagens" name="hard.png"  width="200"   />
 		
-		
+	<p:fieldset class="teste">	
 	 <h5>Descrição do Pedido</h5>
     <span class="ui-float-label">
        <p:inputText id="descricao" value="#{controladorPedido.observacoes}" required= "true"/>
@@ -49,6 +49,69 @@
 		<p:commandButton action="#{controladorPedido.cadastrar()}" ajax="false" 
 			value="Cadastrar" />
 		
+		</p:fieldset>
 	</h:form>
+	
 </h:body>
+<style type="text/css" media="screen">
+
+.
+.fieldDescricao{ 
+	margin-left: 0%;
+	margin-right: 80%;
+}
+
+#titulo{
+	font-family: sans-serif;
+	text-align:center;
+	font:bold;
+	color: #380B61;
+	margin-left: 0%;
+}
+
+#logo{
+
+	text-align:center;
+	
+
+	margin-left: 0%;
+}
+
+.fieldset {
+	border:0;
+}
+
+
+
+body{
+	background-color: #F0F8FF;
+	font-family: sans-seriff;
+	font-size: 1em;
+	color: gray;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 2%;
+	justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
 </html>

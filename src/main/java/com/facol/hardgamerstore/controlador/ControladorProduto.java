@@ -35,7 +35,7 @@ public class ControladorProduto implements Serializable {
     
     private Categoria categoria;
     private Long categoriaId;
-    
+    Produto produto;
     
 	public String cadastrar() {
 
@@ -56,7 +56,7 @@ public class ControladorProduto implements Serializable {
 
 		this.repProduto.criar(produto);
 		this.listar();
-		return "/listar.xhtml";
+		return "/ProdutoListar.xhtml";
 
 	}
 	public void limpar() {
@@ -67,6 +67,8 @@ public class ControladorProduto implements Serializable {
 	public void listar() {
 		this.produtos = this.repProduto.listar();
 	}
+	
+	
 	
 	public String remover(Produto produto) {
 		this.repProduto.remover(produto);
@@ -88,6 +90,20 @@ public class ControladorProduto implements Serializable {
 	}
 	
 	
+	
+	public String encontrarPorId(Long produtoId) {
+
+		produto = this.repProduto.encontrarPorId(produtoId);
+		descricao = this.produto.getDescricao();
+		unidadeDeMedida = this.produto.getUnidadeDeMedida();
+		caracteristica = this.produto.getCaracteristica();
+		estoque = this.produto.getEstoque(); 
+		precoDeCusto = this.produto.getPrecoDeCusto();
+		precoDeVenda = this.produto.getPrecoDeVenda();
+		
+		
+		return "/produto/AlterarProduto.xhtml";
+}
 	
 	public RepositorioProduto getRepProduto() {
 		return repProduto;

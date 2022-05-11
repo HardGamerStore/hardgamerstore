@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+
 import com.facol.hardgamerstore.modelo.Produto;
 
 @Stateless
@@ -36,4 +37,13 @@ public class RepositorioProduto extends RepositorioGenerico<Produto>{
 		Produto removeProduto = (Produto)query.getSingleResult();
 		this.entityManager.remove(removeProduto);
 	}
+	
+	public Produto encontrarPorId(Long produtoId) {
+		Query query = this.entityManager.createQuery("FROM Produto entity WHERE entity.id = :id");
+		query.setParameter("id", produtoId);
+		Produto produto = (Produto)query.getSingleResult();
+		return produto;
+		
+	}
+	
 }

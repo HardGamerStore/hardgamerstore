@@ -5,14 +5,19 @@
 
 <h:head>
 	<title>Cadastro de Produtos</title>
-	<h1>Cadastro de Produtos</h1>
+<h1 id = "titulo">Cadastro de Produtos</h1>
 </h:head>
 
 <h:body>
 	<h:form id="form">
-		Adição de Produtos
+		<p:graphicImage id="logo" library="imagens" name="hard.png"  width="200"   />
+	
+	
+
+	
+	 <p:fieldset class="teste">
 		
-		
+	
 	 <h5>Descrição do Produto</h5>
     <span class="ui-float-label">
        <p:inputText id="descriccao" value="#{controladorProduto.descricao}" required ="true"/>
@@ -27,7 +32,7 @@
    
     <h5>Categoria</h5>
     <span class="ui-float-label">
-    	<p:selectOneMenu value="#{controladorProduto.categoriaId}">
+    	<p:selectOneMenu value="#{controladorProduto.categoriaId}" style="width: 200">
     		<f:selectItems value="#{controladorProduto.listarCategorias()}" />
     	</p:selectOneMenu>
        <p:outputLabel for="@previous" value="Categoria"   />
@@ -39,12 +44,15 @@
        <p:outputLabel for="@previous" value="Unidade De Medida"/>
    </span>
    
+   
+
+    
    <h5>Estoque</h5>
     <span class="ui-float-label">
-       <p:inputText id="unidadeDeMedida" value="#{controladorProduto.estoque}"  required ="true"/>
-       <p:outputLabel for="@previous" value="Preço de Custo"/>
+       <p:inputText id="estoque" value="#{controladorProduto.estoque}"  required ="true"/>
+       <p:outputLabel for="@previous" value="Preço de Venda"/>
    </span>
-   
+  
    <h5>Preço de Custo</h5>
     <span class="ui-float-label">
        <p:inputText id="precoDeCusto" value="#{controladorProduto.precoDeCusto}"  required ="true"/>
@@ -60,7 +68,74 @@
 		<br /><br />
 		<p:commandButton action="#{controladorProduto.cadastrar()}" ajax="false" 
 			value="Cadastrar" />
-		
+			
+			
+			
+			
+		</p:fieldset>
 	</h:form>
 </h:body>
+
+<style type="text/css" media="screen">
+
+.
+.fieldDescricao{ 
+	margin-left: 0%;
+	margin-right: 80%;
+}
+
+#titulo{
+	font-family: sans-serif;
+	text-align:center;
+	font:bold;
+	color: #380B61;
+	margin-left: 0%;
+}
+
+#logo{
+
+	text-align:center;
+	
+
+	margin-left: 0%;
+}
+
+.fieldset {
+	border:0;
+}
+
+
+
+body{
+	background-color: #F0F8FF;
+	font-family: sans-seriff;
+	font-size: 1em;
+	color: gray;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 2%;
+	justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+
 </html>
