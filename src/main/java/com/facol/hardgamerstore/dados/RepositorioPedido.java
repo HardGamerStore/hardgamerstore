@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Pedido;
+import com.facol.hardgamerstore.modelo.Produto;
 
 @Stateless
 public class RepositorioPedido extends RepositorioGenerico<Pedido> {
@@ -36,4 +37,15 @@ public class RepositorioPedido extends RepositorioGenerico<Pedido> {
 		Pedido removeProduto = (Pedido)query.getSingleResult();
 		this.entityManager.remove(removeProduto);
 	}
+	
+	
+	public Pedido encontrarPorId(Long pedidoId) {
+		Query query = this.entityManager.createQuery("FROM Pedido entity WHERE entity.id = :id");
+		query.setParameter("id", pedidoId);
+		Pedido pedido = (Pedido)query.getSingleResult();
+		return pedido;
+		
+	}
+	
+	
 }

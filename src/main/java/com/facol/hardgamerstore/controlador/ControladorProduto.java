@@ -105,6 +105,27 @@ public class ControladorProduto implements Serializable {
 		return "/produto/AlterarProduto.xhtml";
 }
 	
+	
+	public String alterar() {
+		produto.setCaracteristica(this.caracteristica);
+		produto.setDescricao(this.descricao);
+		produto.setUnidadeDeMedida(this.unidadeDeMedida);
+		produto.setEstoque(this.estoque);
+		produto.setPrecoDeCusto(this.precoDeCusto);
+		produto.setPrecoDeVenda(this.precoDeVenda);
+		
+		this.repProduto.alterar(produto);
+		
+		return "/produto/produtoListar.xhtml";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	public RepositorioProduto getRepProduto() {
 		return repProduto;
 	}

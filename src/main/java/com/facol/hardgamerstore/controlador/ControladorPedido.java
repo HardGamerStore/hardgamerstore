@@ -29,6 +29,7 @@ public class ControladorPedido implements Serializable {
     private Produto produtoId;
     private Cliente clienteId;
     private double subtotal;
+    Pedido pedido;
     
 	public String cadastrar() {
 
@@ -67,7 +68,32 @@ public class ControladorPedido implements Serializable {
 		return null;
 	}
 	
+	public String encontrarPorId(Long pedidoId) {
+
+		pedido = this.repPedido.encontrarPorId(pedidoId);
+		observacoes = this.pedido.getObservacoes();
+		meioDePagamento = this.pedido.getMeioDePagamento();
+		produtoId = this.pedido.getProdutoId();
+		clienteId = this.pedido.getClienteId(); 
+		subtotal = this.pedido.getSubtotal();
+		
+		
+		
+		return "/pedido/AlterarPedido.xhtml";
+}
 	
+	
+	public String alterar() {
+		pedido.setObservacoes(this.observacoes);
+		pedido.setMeioDePagamento(this.meioDePagamento);
+		pedido.setProdutoId(this.produtoId);
+		pedido.setClienteId(this.clienteId);
+		pedido.setSubtotal(this.subtotal);
+	
+		this.repPedido.alterar(pedido);
+		
+		return "/produto/produtoListar.xhtml";
+	}
 	
 	
 	
