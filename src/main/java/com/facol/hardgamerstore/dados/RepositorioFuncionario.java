@@ -40,6 +40,7 @@ public class RepositorioFuncionario extends RepositorioGenerico<Funcionario> {
 		query.setParameter("id", funcionario.getId());
 		Funcionario removeFuncionario = (Funcionario)query.getSingleResult();
 		this.entityManager.remove(removeFuncionario);
+		
 	}	
 
 	

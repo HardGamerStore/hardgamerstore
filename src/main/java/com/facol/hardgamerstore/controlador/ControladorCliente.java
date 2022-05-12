@@ -1,9 +1,10 @@
 package com.facol.hardgamerstore.controlador;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -13,7 +14,7 @@ import com.facol.hardgamerstore.dados.RepositorioCliente;
 import com.facol.hardgamerstore.modelo.Cliente;
 
 @SuppressWarnings("serial")
-@SessionScoped
+@RequestScoped
 @Named("controladorCliente")
 public class ControladorCliente implements Serializable {
 
@@ -38,23 +39,25 @@ public class ControladorCliente implements Serializable {
 	private String bairro;
 	private String logradouro;
 
-	public String cadastrar() {
-		cliente.setId(this.id);
-		cliente.setNome(this.nomeCliente);
-		cliente.setCpf(this.cpf);
-		cliente.setEmail(this.email);
-		cliente.setDataDeNascimento(this.dataDeNascimento);
-		cliente.setLogin(this.login);
-		cliente.setSenha(this.senha);
-		cliente.setTelefone(this.telefone);
-		cliente.setGenero(this.genero);
-		cliente.setEstado(this.estado);
-		cliente.setCidade(this.cidade);
-		cliente.setBairro(this.bairro);
-		cliente.setLogradouro(this.logradouro);
+	public String cadastrar() throws IOException {
+		Cliente c = new Cliente();
+		c.setId(this.id);
+		c.setNome(this.nomeCliente);
+		c.setCpf(this.cpf);
+		c.setEmail(this.email);
+		c.setDataDeNascimento(this.dataDeNascimento);
+		c.setLogin(this.login);
+		c.setSenha(this.senha);
+		c.setTelefone(this.telefone);
+		c.setGenero(this.genero);
+		c.setEstado(this.estado);
+		c.setCidade(this.cidade);
+		c.setBairro(this.bairro);
+		c.setLogradouro(this.logradouro);
 
-		this.repCliente.criar(cliente);
-		return "/cliente/listaClientes.xhtml";
+		this.repCliente.criar(c);
+		FacesContext.getCurrentInstance().getExternalContext().dispatch("/cliente/listaClientes.xhtml");
+		return null;
 	}
 	
 	public String encontrarPorId(Long idCliente) {

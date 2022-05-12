@@ -3,7 +3,7 @@ package com.facol.hardgamerstore.controlador;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -15,7 +15,7 @@ import com.facol.hardgamerstore.modelo.Pedido;
 import com.facol.hardgamerstore.modelo.Produto;
 
 @SuppressWarnings("serial")
-@SessionScoped
+@RequestScoped
 @Named("controladorPedido")
 public class ControladorPedido implements Serializable {
 

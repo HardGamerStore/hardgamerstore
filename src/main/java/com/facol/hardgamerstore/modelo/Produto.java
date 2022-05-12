@@ -15,14 +15,14 @@ public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	@Column(nullable = false)
 	private int estoque;
 	@Column(length = 200, nullable = false)
 	private String descricao;
-	@Column(length = 20, nullable = false)
+	@Column(length = 250, nullable = false)
 	private String unidadeDeMedida;
-	@Column(length = 50, nullable = false)
+	@Column(length = 250, nullable = false)
 	private String caracteristica;
 	@Column(nullable = false)
 	private double precoDeCusto;
@@ -34,10 +34,10 @@ public class Produto {
 	
 	private String nomeArquivo;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getEstoque() {

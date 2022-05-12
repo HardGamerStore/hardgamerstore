@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -20,7 +20,7 @@ import com.facol.hardgamerstore.modelo.Produto;
 
 
 @SuppressWarnings("serial")
-@SessionScoped
+@RequestScoped
 @Named("controladorProduto")
 public class ControladorProduto implements Serializable {
 
@@ -34,11 +34,15 @@ public class ControladorProduto implements Serializable {
     private double precoDeCusto,precoDeVenda; 
     private Categoria categoria;
     private Long categoriaId;
+    private Long id;
+    
+
+	Produto produto;
     
     
     //upload de imagens
   //DIRETORIO ONDE SÃO SALVA AS IMAGENS (obs.: CONFIRAM COM ATENÇÃO O DIRETORIO )
-    private String folder = "C:/Users/561ma/Documents/GitHub/hardgamerstore/src/main/webapp/resources/imagens/";
+    private String folder = "C:/Users/GTXGu/workspace-facol/hardgamerstore/src/main/webapp/resources/imagens/";
 	private Part uploadedFile;
 	private String nomeArquivo;
 	
@@ -85,7 +89,6 @@ public class ControladorProduto implements Serializable {
 		if (this.categoriaId != null) {
 			Categoria categoria = this.catRepositorio.encontrarPorId(this.categoriaId);
 			produto.setCategoriaId(categoria);
-//			produto.setCategoriaId(categoria);
 		}
 
 		produto.setCaracteristica(caracteristica);		
@@ -95,10 +98,46 @@ public class ControladorProduto implements Serializable {
 		
 		this.saveFile();
 		this.repProduto.criar(produto);
-		this.listar();
 		return "/listar.xhtml";
-
 	}
+	
+	public String alterar() {
+
+		Produto produto = new Produto();
+		produto.setEstoque(estoque);
+		produto.setPrecoDeCusto(precoDeCusto);
+		produto.setPrecoDeVenda(precoDeVenda);
+		produto.setNomeArquivo(this.uploadedFile.getSubmittedFileName());
+		
+		if (this.categoriaId != null) {
+			Categoria categoria = this.catRepositorio.encontrarPorId(this.categoriaId);
+			produto.setCategoriaId(categoria);
+		}
+
+		produto.setCaracteristica(caracteristica);		
+		produto.setDescricao(this.descricao);
+		produto.setUnidadeDeMedida(this.unidadeDeMedida);
+		
+		this.repProduto.alterar(produto);
+		this.repProduto.listar();
+		return "/produto/produtoListar.xhtml";
+	}
+	
+	
+	public String encontrarPorId(Long idProduto) {
+
+		produto = this.repProduto.encontrarPorId(idProduto);
+		estoque = this.produto.getEstoque();
+		precoDeCusto = this.produto.getPrecoDeCusto();
+		precoDeVenda = this.produto.getPrecoDeVenda();
+		nomeArquivo = this.produto.getNomeArquivo();
+		caracteristica = this.produto.getCaracteristica();
+		descricao = this.produto.getDescricao();
+		unidadeDeMedida = this.produto.getUnidadeDeMedida();
+		
+		return "/produto/produtoAlterar.xhtml";
+}
+	
 	public void limpar() {
 		this.descricao = null;
 		this.unidadeDeMedida = null;
@@ -174,6 +213,14 @@ public List<Produto> listar() {
 	}
 	public void setEstoque(int estoque) {
 		this.estoque = estoque;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public double getPrecoDeCusto() {
 		return precoDeCusto;

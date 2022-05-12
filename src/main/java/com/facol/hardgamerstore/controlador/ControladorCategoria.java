@@ -1,12 +1,8 @@
 package com.facol.hardgamerstore.controlador;
-
-
-
 import java.io.Serializable;
-
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -14,7 +10,7 @@ import com.facol.hardgamerstore.dados.RepositorioCategoria;
 import com.facol.hardgamerstore.modelo.Categoria;
 
 @SuppressWarnings("serial")
-@SessionScoped
+@RequestScoped
 @Named("controladorCategoria")
 public class ControladorCategoria implements Serializable {
 

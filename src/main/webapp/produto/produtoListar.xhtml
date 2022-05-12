@@ -30,16 +30,11 @@
                 styleClass="p-shadow-2" width="100"/>
             </p:column>
 			
-			
-			
-			<p:column headerText="Remover">
-				<p:commandLink value="Remover" 
-					update="formListaProduto:tabelaProduto, formListaProduto:messages"
-					action="#{controladorProduto.remover(produto)}">
-					<p:confirm header="Confirmação" 
-						message="Você quer mesmo remover #{produto.descricao}?" 
-						icon="pi pi-exclamation-triangle"/>
-				</p:commandLink>
+			<p:column headerText="Gerenciamento">
+				<p:menuButton value="Ações" buttonStyleClass="ui-button-outlined">
+					<p:menuitem value="Alterar" update="formListaProduto:tabelaProduto" action="#{controladorProduto.encontrarPorId(produto.id)}" icon="pi pi-refresh"/>
+					<p:menuitem value="Deletar" update="formListaProduto:tabelaProduto" action="#{controladorProduto.remover(produto)}" icon="pi pi-times"/>
+				</p:menuButton>
 			</p:column>
 		</p:dataTable>
 		
