@@ -32,6 +32,8 @@ public class Produto {
 	@JoinColumn(name = "categoriaId")
 	private Categoria categoriaId;
 	
+	private String nomeArquivo;
+	
 	public int getId() {
 		return id;
 	}
@@ -79,6 +81,12 @@ public class Produto {
 	}
 	public void setCategoriaId(Categoria categoria) {
 		this.categoriaId = categoria;
+	}
+	public String getNomeArquivo() {
+		return nomeArquivo;
+	}
+	public void setNomeArquivo(String nomeArquivo) {
+		this.nomeArquivo = nomeArquivo;
 	}
 	
 

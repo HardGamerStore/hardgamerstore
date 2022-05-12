@@ -1,5 +1,6 @@
 package com.facol.hardgamerstore.controlador;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 
 import com.facol.hardgamerstore.dados.RepositorioCategoria;
 import com.facol.hardgamerstore.dados.RepositorioProduto;
@@ -26,15 +28,49 @@ public class ControladorProduto implements Serializable {
 	private RepositorioProduto repProduto;
 	@Inject
 	private RepositorioCategoria catRepositorio;
-
 	private List<Produto> produtos;
-	
 	private String descricao, unidadeDeMedida,caracteristica;
     private int estoque;
-    private double precoDeCusto,precoDeVenda;
-    
+    private double precoDeCusto,precoDeVenda; 
     private Categoria categoria;
     private Long categoriaId;
+    
+    
+    //upload de imagens
+  //DIRETORIO ONDE SÃO SALVA AS IMAGENS (obs.: CONFIRAM COM ATENÇÃO O DIRETORIO )
+    private String folder = "C:/Users/561ma/Documents/GitHub/hardgamerstore/src/main/webapp/resources/imagens/";
+	private Part uploadedFile;
+	private String nomeArquivo;
+	
+	
+	//METODO PARA SALVAR IMAGEM
+		public void saveFile() {
+
+		String fileName = "";
+				 
+			  try {
+				  
+				  fileName = getFilename(uploadedFile);
+				  
+				  uploadedFile.write(folder+fileName);		  
+		            
+		        } catch (IOException ex) {
+		            System.out.println(ex);      
+		        }
+			  //MENSAGEM DE UPLOAD CONCLUIDO
+			  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("IMAGEM " + fileName+ " IMAGEM SALVA COM SUCESSO!"));
+		}
+		
+		//RECEBE A IMAGEM
+		private static String getFilename(Part part) {
+	        for (String cd : part.getHeader("content-disposition").split(";")) {
+	            if (cd.trim().startsWith("filename")) {
+	                String filename = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+	                return filename.substring(filename.lastIndexOf('/') + 1).substring(filename.lastIndexOf('\\') + 1); // MSIE fix.
+	            }
+	        }
+	        return null;
+	    }
     
     
 	public String cadastrar() {
@@ -43,6 +79,8 @@ public class ControladorProduto implements Serializable {
 		produto.setEstoque(estoque);
 		produto.setPrecoDeCusto(precoDeCusto);
 		produto.setPrecoDeVenda(precoDeVenda);
+		//SALVA O NOME DA IMAGEM NO BANCO DE DADOS 
+		produto.setNomeArquivo(this.uploadedFile.getSubmittedFileName());
 		
 		if (this.categoriaId != null) {
 			Categoria categoria = this.catRepositorio.encontrarPorId(this.categoriaId);
@@ -53,7 +91,9 @@ public class ControladorProduto implements Serializable {
 		produto.setCaracteristica(caracteristica);		
 		produto.setDescricao(this.descricao);
 		produto.setUnidadeDeMedida(this.unidadeDeMedida);
-
+		
+		
+		this.saveFile();
 		this.repProduto.criar(produto);
 		this.listar();
 		return "/listar.xhtml";
@@ -64,8 +104,12 @@ public class ControladorProduto implements Serializable {
 		this.unidadeDeMedida = null;
 	}
 	
-	public void listar() {
-		this.produtos = this.repProduto.listar();
+public List<Produto> listar() {
+		
+		this.produtos=repProduto.listar();
+		
+		return produtos;
+		
 	}
 	
 	public String remover(Produto produto) {
@@ -148,6 +192,30 @@ public class ControladorProduto implements Serializable {
 	}
 	public void setCategoriaId(Long categoriaId) {
 		this.categoriaId = categoriaId;
+	}
+
+	public String getFolder() {
+		return folder;
+	}
+
+	public void setFolder(String folder) {
+		this.folder = folder;
+	}
+
+	public String getNomeArquivo() {
+		return nomeArquivo;
+	}
+
+	public void setNomeArquivo(String nomeArquivo) {
+		this.nomeArquivo = nomeArquivo;
+	}
+
+	public Part getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(Part uploadedFile) {
+		this.uploadedFile = uploadedFile;
 	}
 	
 	

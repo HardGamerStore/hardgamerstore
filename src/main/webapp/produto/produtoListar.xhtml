@@ -13,7 +13,7 @@
 		<p:messages id="messages" closable="true" />
 	
 		<p:dataTable id="tabelaProduto" widgetVar="tabelaProduto"  
-			value="#{controladorProduto.produtos}" var="produto">
+			value="#{controladorProduto.listar()}" var="produto">
 			<p:column headerText="Descrição">
 				<p:outputLabel value="#{produto.descricao}"/>
 			</p:column>
@@ -24,6 +24,11 @@
 			<p:column headerText="Caracteristica">
 				<p:outputLabel value="#{produto.caracteristica}" />
 			</p:column>
+			
+			<p:column headerText="Imagem">
+               <p:graphicImage library="imagens" url ="./resources/imagens/#{produto.nomeArquivo}"
+                styleClass="p-shadow-2" width="100"/>
+            </p:column>
 			
 			
 			

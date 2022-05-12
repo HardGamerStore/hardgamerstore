@@ -8,8 +8,10 @@
 	<h1>Cadastro de Produtos</h1>
 </h:head>
 
-<h:body>
-	<h:form id="form">
+<h:body>              
+
+ <!--enctype="multipart/form-data" IMPORTATE PARA CONSEGUIRMOS IMPORTAR A IMAGEM  -->                      
+	<h:form id="form" enctype="multipart/form-data">
 		Adição de Produtos
 		
 		
@@ -56,6 +58,27 @@
        <p:inputText id="precoDeVenda" value="#{controladorProduto.precoDeVenda}" required ="true"/>
        <p:outputLabel for="@previous" value="Preço de Venda"/>
    </span>
+   
+   <br />
+			<tr>
+	    	   			
+	    	   			<td>  
+	    	   			 <h:inputFile  id="file-id"  
+	    	   			       value="#{controladorProduto.uploadedFile}" 
+	    	   			       required="true"   
+                               requiredMessage="Selecione um arquivo" 
+                               alt="upload file"
+                               style="font-size: 15px;">
+                         </h:inputFile>  
+	    	   			
+	    	   			</td>
+	    	   			
+	    	   			<td>
+	    	   				<h:message for="file-id" style="color:white;" />
+	    	   			</td>
+	    	   	</tr>
+	    	   <br />
+   
 		
 		<br /><br />
 		<p:commandButton action="#{controladorProduto.cadastrar()}" ajax="false" 
