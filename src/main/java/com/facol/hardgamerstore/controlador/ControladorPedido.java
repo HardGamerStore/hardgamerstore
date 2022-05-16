@@ -1,6 +1,7 @@
 package com.facol.hardgamerstore.controlador;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -12,6 +13,7 @@ import javax.inject.Named;
 import com.facol.hardgamerstore.dados.RepositorioPedido;
 import com.facol.hardgamerstore.modelo.Cliente;
 import com.facol.hardgamerstore.modelo.Pedido;
+import com.facol.hardgamerstore.modelo.PedidoItem;
 import com.facol.hardgamerstore.modelo.Produto;
 
 @SuppressWarnings("serial")
@@ -35,7 +37,12 @@ public class ControladorPedido implements Serializable {
 		Pedido pedido = new Pedido();
 		pedido.setObservacoes(observacoes);
 		pedido.setMeioDePagamento(meioDePagamento);
-		pedido.setProdutoId(produtoId);
+	
+		List<PedidoItem> itens = new ArrayList<>();
+		PedidoItem item1 = new PedidoItem();
+		item1.setProdutoId(produtoId);
+		
+		//	pedido.setProdutoId(produtoId);
 		pedido.setClienteId(clienteId);
 		pedido.setSubtotal(subtotal);
 		
