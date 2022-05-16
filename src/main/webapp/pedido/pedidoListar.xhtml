@@ -13,7 +13,8 @@
 		<p:messages id="messages" closable="true" />
 	
 		<p:dataTable id="tabelaPedido" widgetVar="tabelaPedido"  
-			value="#{controladorPedido.pedidos}" var="pedido">
+			value="#{controladorPedido.pedidos}" var="pedido" showGridlines="true">
+
 			<p:column headerText="Observações">
 				<p:outputLabel value="#{pedido.obsevacoes}"/>
 			</p:column>

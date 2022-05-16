@@ -1,11 +1,11 @@
 package com.facol.hardgamerstore.controlador;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,14 +14,23 @@ import com.facol.hardgamerstore.dados.RepositorioCliente;
 import com.facol.hardgamerstore.modelo.Cliente;
 
 @SuppressWarnings("serial")
-@RequestScoped
 @Named("controladorCliente")
+@RequestScoped
+@ManagedBean
 public class ControladorCliente implements Serializable {
 
 	@Inject
 	private RepositorioCliente repCliente;
 	private List<Cliente> clientes;
-	Cliente cliente;
+	Cliente cliente = new Cliente();
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	private Long id;
 	private String nomeCliente;
@@ -30,43 +39,52 @@ public class ControladorCliente implements Serializable {
 	private String dataDeNascimento;
 	private String genero;
 	private String telefone;
-	
+
 	private String login;
 	private String senha;
-	
+
 	private String estado;
 	private String cidade;
 	private String bairro;
 	private String logradouro;
 
-	public String cadastrar() throws IOException {
-		Cliente c = new Cliente();
-		c.setId(this.id);
-		c.setNome(this.nomeCliente);
-		c.setCpf(this.cpf);
-		c.setEmail(this.email);
-		c.setDataDeNascimento(this.dataDeNascimento);
-		c.setLogin(this.login);
-		c.setSenha(this.senha);
-		c.setTelefone(this.telefone);
-		c.setGenero(this.genero);
-		c.setEstado(this.estado);
-		c.setCidade(this.cidade);
-		c.setBairro(this.bairro);
-		c.setLogradouro(this.logradouro);
+	public String cadastrar() {
 
-		this.repCliente.criar(c);
-		FacesContext.getCurrentInstance().getExternalContext().dispatch("/cliente/listaClientes.xhtml");
-		return null;
+		if (this.cpf != null) {
+
+			Cliente c = new Cliente();
+			c.setId(this.id);
+			c.setNome(this.nomeCliente);
+			c.setCpf(this.cpf);
+			c.setEmail(this.email);
+			c.setDataDeNascimento(this.dataDeNascimento);
+			c.setLogin(this.login);
+			c.setSenha(this.senha);
+			c.setTelefone(this.telefone);
+			c.setGenero(this.genero);
+			c.setEstado(this.estado);
+			c.setCidade(this.cidade);
+			c.setBairro(this.bairro);
+			c.setLogradouro(this.logradouro);
+
+			this.repCliente.criar(c);
+			limparCampos();
+			
+		}
+		return "/cliente/listaClientes.xhtml";
 	}
 	
+	public void limparCampos() {
+		this.cpf = null;
+	}
+
 	public String encontrarPorId(Long idCliente) {
 
 		cliente = this.repCliente.encontrarPorId(idCliente);
 		nomeCliente = this.cliente.getNome();
 		cpf = this.cliente.getCpf();
 		email = this.cliente.getEmail();
-		dataDeNascimento = this.cliente.getDataDeNascimento(); 
+		dataDeNascimento = this.cliente.getDataDeNascimento();
 		login = this.cliente.getLogin();
 		senha = this.cliente.getSenha();
 		telefone = this.cliente.getTelefone();
@@ -75,10 +93,10 @@ public class ControladorCliente implements Serializable {
 		cidade = this.cliente.getCidade();
 		bairro = this.cliente.getBairro();
 		logradouro = this.cliente.getLogradouro();
-		
+
 		return "/cliente/formAlterarCliente.xhtml";
-}
-	
+	}
+
 	public String alterar() {
 		cliente.setNome(this.nomeCliente);
 		cliente.setCpf(this.cpf);
@@ -92,9 +110,20 @@ public class ControladorCliente implements Serializable {
 		cliente.setCidade(this.cidade);
 		cliente.setBairro(this.bairro);
 		cliente.setLogradouro(this.logradouro);
-		
+
 		this.repCliente.alterar(cliente);
 		return "/cliente/listaClientes.xhtml";
+	}
+
+	public String login() {
+
+		cliente = repCliente.validate(login, senha);
+		System.out.println("local: "+login +"locals: "+senha);
+		if(login != null && senha != null) {
+			return "index.xhtml";
+		} else {
+			return "/cliente/login.xhtml";
+		}
 	}
 
 	public List<Cliente> listar() {
@@ -107,26 +136,26 @@ public class ControladorCliente implements Serializable {
 		this.listar();
 		return null;
 	}
-	
+
 	public String listaDeClientes() {
 		return "/cliente/listaClientes.xhtml";
 	}
-	
+
 	public void msgUpdate() {
-        addMessage("Alterar cliente", "Redirecionando para o formulário...");
-    }
+		addMessage("Alterar cliente", "Redirecionando para o formulário...");
+	}
 
-    public void msgDelete() {
-    	Cliente c = new Cliente();
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, 
-        		"Deletar", "Cliente "+c.getNome() + " excluído com sucesso.");
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
+	public void msgDelete() {
+		Cliente c = new Cliente();
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Deletar",
+				"Cliente " + c.getNome() + " excluído com sucesso.");
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
 
-    public void addMessage(String summary, String detail) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
+	public void addMessage(String summary, String detail) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
+		FacesContext.getCurrentInstance().addMessage(null, message);
+	}
 
 	public List<Cliente> getClientes() {
 		return clientes;

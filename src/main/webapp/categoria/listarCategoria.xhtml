@@ -13,7 +13,7 @@
 		<p:messages id="messages" closable="true" />
 	
 		<p:dataTable id="tabelaCaegoria" widgetVar="tabelaCategoria"  
-			value="#{controladorCategoria.categorias}" var="categoria">
+			value="#{controladorCategoria.categorias}" var="categoria" showGridlines="true">
 			<p:column headerText="codigo">
 				<p:outputLabel value="#{categoria.id}"/>
 			</p:column>

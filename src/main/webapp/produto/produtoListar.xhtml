@@ -12,8 +12,7 @@
 	<h:form id="formListaProduto">
 		<p:messages id="messages" closable="true" />
 	
-		<p:dataTable id="tabelaProduto" widgetVar="tabelaProduto"  
-			value="#{controladorProduto.listar()}" var="produto">
+		<p:dataTable id="tabelaProduto" widgetVar="tabelaProduto" value="#{controladorProduto.listar()}" var="produto" showGridlines="true">
 			<p:column headerText="Descrição">
 				<p:outputLabel value="#{produto.descricao}"/>
 			</p:column>
@@ -26,7 +25,7 @@
 			</p:column>
 			
 			<p:column headerText="Imagem">
-               <p:graphicImage library="imagens" url ="./resources/imagens/#{produto.nomeArquivo}"
+               <p:graphicImage url ="./resources/imagens/#{produto.nomeArquivo}"
                 styleClass="p-shadow-2" width="100"/>
             </p:column>
 			

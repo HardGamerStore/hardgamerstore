@@ -8,11 +8,12 @@ public abstract class RepositorioGenerico <T> {
 
 	public void criar(T t) {
 		this.getEntityManager().persist(t);
+		this.getEntityManager().flush();
 	}
 	
 	public void alterar(T t) {
-		
 		this.getEntityManager().merge(t);
+		this.getEntityManager().flush();
 	}
 	
 }

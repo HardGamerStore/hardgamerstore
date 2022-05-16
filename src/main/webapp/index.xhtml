@@ -8,27 +8,64 @@
 </h:head>
 
 <h:body>
-
+<p:fieldset>
+	<div class = "imgLoja">
+	<p:graphicImage url ="./resources/imagens/104161511.png" library="imagens" width="200" styleClass="imgLoja"/>
+	</div>
 	<h1>Bem-vindo ao site da loja!</h1>
 	<h2>fique a vontade para explorar nossos produtos! :)</h2>
-	
-	<h:form>
-	<p:commandButton action="#{controladorCliente.listaDeClientes()}" ajax="false" 
-			value="Ir pra lista de clientes" /><br/><br/>
-		<p:commandButton action="/cliente/formCadastroCliente" ajax="false" 
-			value="Cadastrar clientes" /><br/><br/>	
-	<p:commandButton action="/produto/produtoAdd.xhtml" ajax="false" 
-			value="Cadastrar Produtos" /><br/><br/>
-	<p:commandButton action="/produto/produtoListar.xhtml" ajax="false" 
-			value="listar Produtos" /><br/><br/>
-    <p:commandButton action="categoria/cadastrarCategoria.xhtml" ajax="false" 
-			value="cadatrar categoria" /><br/><br/>
-			
-			
-			
-			cadastrarCategoria.xhtml	
-					
-			
-	</h:form>
+	<p:commandLink action="/funcionario/login.xhtml" value="Área restrita"/>
+</p:fieldset><br/><br/>
+
+<h:form id="form">
+
+	<p:fieldset>
+    <div class="card">
+        <p:carousel value="#{controladorProduto.listar()}" var="product" numVisible="5" numScroll="5">
+            <f:facet name="header">
+                <h2>Produtos</h2>
+            </f:facet>
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="p-mb-3">
+                        <p:graphicImage library="imagens" url ="./resources/imagens/#{product.nomeArquivo}" styleClass="p-shadow-2" width="100"/>
+                    </div>
+                    <div>
+                        <h3 class="p-mb-1">#{product.descricao}</h3>
+                        <h4 class="p-mb-1">#{product.caracteristica}</h4>
+                        <h5 class="p-mt-0 p-mb-3">
+                            <h:outputText value="#{product.precoDeVenda}">
+                                <f:convertNumber type="currency" pattern="¤#0" currencySymbol="R$" />
+                            </h:outputText>
+                        </h5>
+                        <div class="p-mt-5">
+                            <p:commandButton type="button" value="Adicionar ao carrinho" icon="pi pi-shopping-cart"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p:carousel>
+    </div>
+    </p:fieldset>
+   </h:form>
+   
 </h:body>
+	<style type="text/css">
+    .product-item .product-item-content {
+        border: 1px solid var(--surface-d);
+        border-radius: 3px;
+        margin: .3rem;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .product-item .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+    }
+    
+    .imgLoja {
+    margin-left: 25%;
+    }
+</style>
 </html>
