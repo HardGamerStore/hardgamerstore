@@ -49,7 +49,7 @@ public class ControladorPedido implements Serializable {
 
 		this.repPedido.criar(pedido);
 		this.listar();
-		return "/listar.xhtml";
+		return "/restrito/listar.xhtml?faces-redirect=true";
 
 	}
 	public void limpar() {

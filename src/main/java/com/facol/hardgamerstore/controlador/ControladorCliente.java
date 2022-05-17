@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import com.facol.hardgamerstore.dados.RepositorioCliente;
 import com.facol.hardgamerstore.modelo.Cliente;
@@ -71,7 +72,7 @@ public class ControladorCliente implements Serializable {
 			limparCampos();
 			
 		}
-		return "/cliente/listaClientes.xhtml";
+		return "/login.xhtml?faces-redirect=true";
 	}
 	
 	public void limparCampos() {
@@ -94,7 +95,7 @@ public class ControladorCliente implements Serializable {
 		bairro = this.cliente.getBairro();
 		logradouro = this.cliente.getLogradouro();
 
-		return "/cliente/formAlterarCliente.xhtml";
+		return "/restrito/formAlterarCliente.xhtml?faces-redirect=true";
 	}
 
 	public String alterar() {
@@ -112,18 +113,28 @@ public class ControladorCliente implements Serializable {
 		cliente.setLogradouro(this.logradouro);
 
 		this.repCliente.alterar(cliente);
-		return "/cliente/listaClientes.xhtml";
+		return "/restrito/listaClientes.xhtml?faces-redirect=true";
 	}
 
 	public String login() {
 
 		cliente = repCliente.validate(login, senha);
-		System.out.println("local: "+login +"locals: "+senha);
-		if(login != null && senha != null) {
-			return "index.xhtml";
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		if(login == null && senha == null) {
+			return null;
 		} else {
-			return "/cliente/login.xhtml";
+			context.getExternalContext().getSessionMap().put("cliente", cliente);
+			return "/index.xhtml?faces-redirect=true";
 		}
+	}
+	
+	public String logOut() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+	            .getExternalContext().getSession(false);
+	    session.invalidate();
+	    
+	    return "/index.xhtml?faces-redirect=true";
 	}
 
 	public List<Cliente> listar() {
@@ -138,7 +149,7 @@ public class ControladorCliente implements Serializable {
 	}
 
 	public String listaDeClientes() {
-		return "/cliente/listaClientes.xhtml";
+		return "/restrito/listaClientes.xhtml?faces-redirect=true";
 	}
 
 	public void msgUpdate() {

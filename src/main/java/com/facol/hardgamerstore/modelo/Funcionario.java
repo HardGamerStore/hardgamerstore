@@ -11,7 +11,7 @@ public class Funcionario extends Pessoa {
 	@Column(length = 50, nullable = false)
 	private String funcao;
 	@Column(nullable = false)
-	private boolean permissoes;
+	private String permissoes;
 	
 	public String getFuncao() {
 		return funcao;
@@ -19,14 +19,10 @@ public class Funcionario extends Pessoa {
 	public void setFuncao(String funcao) {
 		this.funcao = funcao;
 	}
-	public boolean isPermissoes() {
+	public String getPermissoes() {
 		return permissoes;
 	}
-	public void setPermissoes(boolean permissoes) {
+	public void setPermissoes(String permissoes) {
 		this.permissoes = permissoes;
 	}
-	
-	
-	
-	
 }

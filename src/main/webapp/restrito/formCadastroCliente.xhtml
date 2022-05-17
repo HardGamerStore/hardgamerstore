@@ -1,0 +1,151 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+		<title>Cadastro de clientes</title>
+</h:head>
+	
+<h:body>
+
+	<h:form id="formCadastroCliente">
+	<h1 id = "titulo">Cadastro de clientes</h1>
+	
+	<p:inputText id = "id" type="hidden" value="#{controladorCliente.id}"></p:inputText>
+	
+	<p:fieldset class ="fieldForm">
+	
+	
+	<p:fieldset class = "fieldDadosPessoais" style = "width: 100%; margin: 20px auto;">
+	<h2 id = "areaPessoais">Dados pessoais</h2>
+	
+	<div class="">
+		<p:outputLabel><strong>Nome:</strong></p:outputLabel><br/>
+		<p:inputText id = "nome" value="#{controladorCliente.nomeCliente}" style="width: 350" placeholder="Nome" required="true"/>
+	</div><br/>
+	
+	<div class="">
+		<p:outputLabel><strong>CPF:</strong></p:outputLabel><br/>
+         <p:inputMask id="cpf" value="#{controladorCliente.cpf}" style="width: 350" placeholder="Insira seu CPF" mask="999.999.999-99" required="true"/>
+    </div><br/>
+	
+	<div class= "txtEmail">
+		<p:outputLabel><strong>E-mail:</strong></p:outputLabel><br/>
+		<p:inputText id = "email" value="#{controladorCliente.email}" style="width: 350" placeholder="Seu e-mail" required="true"/>
+	</div><br/>
+	
+	<div class="">
+    	<p:outputLabel><strong>Gênero:</strong></p:outputLabel><br/>
+         	<p:selectOneMenu id="option" value="#{controladorCliente.genero}" style="width: 350" required="true">
+         		<f:selectItem itemDisabled="true" itemLabel="Selecione o gênero" itemValue=""/>
+          		<f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
+                <f:selectItem itemLabel="Feminino" itemValue="Feminino"/>
+                <f:selectItem itemLabel="Prefiro não dizer" itemValue="Prefiro não dizer"/>
+            </p:selectOneMenu>
+     </div>
+	
+    <div class=""><br/>
+    	<p:outputLabel><strong>Data de nascimento:</strong></p:outputLabel><br/>
+         <p:inputMask id="date" value="#{controladorCliente.dataDeNascimento}" style="width: 350" placeholder="Sua data de nascimento"
+          mask="99/99/9999" required="true"/>
+    </div><br/>
+    
+    <div class="txtTelefone">
+    	<p:outputLabel><strong>Telefone:</strong></p:outputLabel><br/>
+         <p:inputMask placeholder="Seu telefone" id="telefone" value="#{controladorCliente.telefone}" style="width: 350" mask="(99)99999-9999" required="true"/>
+    </div><br/>
+	
+	</p:fieldset>
+	
+	<p:fieldset class = "fieldEndereco" style = "width: 100%; margin: 20px auto;">
+	<h2 id = "areaEndereco">Seu endereço</h2>
+	<div class= "txtEstado">
+    	<p:outputLabel><strong>Estado:</strong></p:outputLabel><br/>
+		<p:inputText id = "estado" value="#{controladorCliente.estado}" style="width: 350" placeholder="Insira seu estado" required="true"/>
+	</div><br/>
+	
+	<div class= "txtCidade">
+		<p:outputLabel><strong>Cidade:</strong></p:outputLabel><br/>
+		<p:inputText id = "cidade" value="#{controladorCliente.cidade}" style="width: 350" placeholder="Insira sua cidade" required="true"/>
+	</div><br/>
+	
+	<div class= "txtBairro">
+		<p:outputLabel><strong>Bairro:</strong></p:outputLabel><br/>
+		<p:inputText id = "bairro" value="#{controladorCliente.bairro}" style="width: 350" placeholder="Insira seu bairro" required="true"/>
+	</div><br/>
+	
+	<div class= "txtLogradouro">
+		<p:outputLabel><strong>Logradouro:</strong></p:outputLabel><br/>
+		<p:inputText id = "logradouro" value="#{controladorCliente.logradouro}" style="width: 350" placeholder="Insira seu logradouro" required="true"/>
+	</div><br/>
+	
+	</p:fieldset>
+	
+	<p:fieldset class = "fieldCredenciais" style = "width: 100%; margin: 20px auto;">
+	<h2 id = "areaCredenciais">Suas credenciais</h2>
+	<div class= "txtLogin">
+		<p:outputLabel><strong>Login:</strong></p:outputLabel><br/>
+		<p:inputText id = "login" value="#{controladorCliente.login}" required="true" style="width: 350" placeholder="Login"/>
+	</div><br/>
+	
+	<div class= "txtSenha">
+		<p:outputLabel><strong>Senha:</strong></p:outputLabel><br/>
+		<p:password id="senha" value="#{controladorCliente.senha}" required="true" style="width: 350" placeholder="Insira sua senha" feedback="true"
+		promptLabel="Insira sua senha" weakLabel="Fraca"
+                    goodLabel="Regular" strongLabel="Forte!"/>
+	</div><br/>
+	
+	</p:fieldset>
+	
+</p:fieldset><br/>
+	
+	<div align="center">
+	<p:commandButton action="#{controladorCliente.cadastrar()}" ajax="false" value="Desejo me cadastrar agora!" /><br/>
+    </div>
+			</h:form>
+</h:body>
+
+<style type="text/css" media="screen">
+
+.fieldDadosPessoais{ 
+	margin-left: 0%;
+	margin-right: 80%;
+}
+
+.fieldEndereco{ 
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+.fieldCredenciais{ 
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+#titulo{
+	font-family: sans-serif;
+	text-align:center;
+	font:bold;
+	color: #380B61;
+	margin-left: 0%;
+}
+
+.fieldset {
+	border:0;
+}
+
+body{
+	background-color: #F0F8FF;
+	font-family: sans-seriff;
+	font-size: 1em;
+	color: gray;
+	margin-left: 30%;
+	margin-right: 30%;
+	margin-top: 2%;
+	justify-content: center;
+}
+
+</style>
+
+</html>

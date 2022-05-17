@@ -33,7 +33,7 @@ public class ControladorCategoria implements Serializable {
 		
 		this.listar();
 		
-		return "/listarCategoria.xhtml";
+		return "/restrito/listarCategoria.xhtml?faces-redirect=true";
 	}
 	
 	

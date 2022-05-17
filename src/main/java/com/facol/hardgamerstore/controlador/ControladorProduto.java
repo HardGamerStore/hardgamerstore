@@ -98,7 +98,7 @@ public class ControladorProduto implements Serializable {
 		
 		this.saveFile();
 		this.repProduto.criar(produto);
-		return "/listar.xhtml";
+		return "/restrito/produtoListar.xhtml";
 	}
 	
 	public String alterar() {
@@ -120,7 +120,7 @@ public class ControladorProduto implements Serializable {
 		
 		this.repProduto.alterar(produto);
 		this.repProduto.listar();
-		return "/produto/produtoListar.xhtml";
+		return "/restrito/produtoListar.xhtml?faces-redirect=true";
 	}
 	
 	
@@ -135,7 +135,7 @@ public class ControladorProduto implements Serializable {
 		descricao = this.produto.getDescricao();
 		unidadeDeMedida = this.produto.getUnidadeDeMedida();
 		
-		return "/produto/produtoAlterar.xhtml";
+		return "/restrito/produtoAlterar.xhtml?faces-redirect=true";
 }
 	
 	public void limpar() {
