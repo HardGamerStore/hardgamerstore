@@ -34,6 +34,7 @@
     		<f:selectItems value="#{controladorProduto.listarCategorias()}" />
     	</p:selectOneMenu>
        <p:outputLabel for="@previous"/>
+       <a href = "/hardGamerStore/restrito/cadastrarCategoria.xhtml" target="_blank" >Precisa cadastrar uma categoria nova? Clique aqui</a>
    </span>
    
     <h5>Unidade de medida</h5>
@@ -67,14 +68,14 @@
    </span><br/>
    
     </p:fieldset>
-    
+    <br/>
     <p:fieldset class="fieldAcao"> 
 	<tr>
 	    <td>  
 	   		<h:inputFile  id="file-id"  
 	    		value="#{controladorProduto.uploadedFile}" 
-	    	   	required="true"   
-                requiredMessage="Selecione um arquivo" 
+	    	   	
+                requiredMessage="Adicione uma imagem ao produto! :)"
                 alt="upload file"
                 style="font-size: 15px;">
             </h:inputFile>  
@@ -87,6 +88,8 @@
 
 	<br /><br />
 		<p:commandButton action="#{controladorProduto.cadastrar()}" ajax="false" value="Cadastrar" />
+		<br/><br/><br/>
+		 <a href = "/hardGamerStore/restrito/painel.xhtml">Voltar ao painel</a>
 	</h:form>
 </h:body>
 

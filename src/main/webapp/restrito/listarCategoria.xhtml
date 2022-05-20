@@ -4,30 +4,47 @@
 	xmlns:p="http://primefaces.org/ui" >
 
 <h:head>
-	<title>Listar Alunos</title>
+	<title>Lista de categorias</title>
 </h:head>
 
 <h:body>
 	<h3>Lista de categorias </h3>
+
+<div class = "formDiv">
 	<h:form id="formListaCategoria">
 		<p:messages id="messages" closable="true" />
+		
+		<p:fieldset>
+		<p:commandButton id="btn" value="Imprimir" icon="pi pi-print">
+    		<p:printer target="tabelaCategoria" />
+		</p:commandButton>
+	</p:fieldset>
 	
-		<p:dataTable id="tabelaCaegoria" widgetVar="tabelaCategoria"  
-			value="#{controladorCategoria.categorias}" var="categoria" showGridlines="true">
-			<p:column headerText="codigo">
+	<p:dataTable id="tabelaCategoria" widgetVar="tabelaCategoria" value="#{controladorCategoria.listar()}" var="categoria" showGridlines="true">
+			
+			<p:column headerText="Código">
 				<p:outputLabel value="#{categoria.id}"/>
 			</p:column>
-			<p:column headerText="Nome">
+			
+			<p:column headerText="Descrição">
 				<p:outputLabel value="#{categoria.nome}"/>
 			</p:column>
 			
-			
-		</p:dataTable>
+			<p:column headerText="Gerenciamento">
+				<p:menuButton value="Ações" buttonStyleClass="ui-button-outlined">
+					<p:menuitem value="Alterar" update="formListaCategoria:tabelaCategoria" action="#{controladorCategoria.encontrarPorId(categoria.id)}" icon="pi pi-refresh"/>
+					<p:menuitem value="Deletar" update="formListaCategoria:tabelaCategoria" action="#{controladorCategoria.remover(categoria)}" icon="pi pi-times"/>
+				</p:menuButton>
+			</p:column>
+	</p:dataTable>
+	<br/><br/><br/>
+	<p:commandButton value="Voltar ao painel" action="/restrito/painel.xhtml" icon="pi pi-sitemap"/>
 		
 		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
             <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
             <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
         </p:confirmDialog>
 	</h:form>
+</div>
 </h:body>
 </html>

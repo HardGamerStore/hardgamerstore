@@ -9,25 +9,48 @@
 
 <h:body>
 
-	<div class ="topnav">
-			 Bem-vindo, #{controladorCliente.cliente.nome}
-			<h:commandLink value="Sair" action="#{controladorCliente.logOut()}" />
-			<h:commandLink value="Área restrita" action="#{controladorFuncionario.telaLogin()}" />
-	</div>
-	
-	<p:fieldset>
+<h:form>
+
+<h:panelGroup rendered="#{controladorCliente.cliente.nome!=null}">
+	<p:fieldset class="fieldsetTitulo" style= "background: none">
+		<div class ="topnav">
+			<p:menuButton value="Bem-vindo, #{controladorCliente.cliente.nome}" style="background-color:white" icon="pi pi-user">
+				<p:menuitem value="Alterar meus dados" action="/cliente/formAlterarCliente.xhtml" ajax="false" icon="pi pi-user-edit"/>
+			 	<p:menuitem value="Meus pedidos" action="/cliente/pedidoListar.xhtml" ajax="false" icon="pi pi-fw pi-shopping-bag"/>
+				<p:menuitem value="Sair" action="#{controladorCliente.logOut()}" ajax="false" icon="pi pi-sign-out"/>
+			</p:menuButton>
 		<div class="imgLoja" style="text-align:right;">
-		<img src= "./resources/imagens/104161511.png" width="180" />
+			<img src= "./resources/imagens/104161511.png" width="180" />
 		</div>
+		<div class = "titulo">
 			<h1>Bem-vindo ao site da loja!</h1>
 			<h2>fique a vontade para explorar nossos produtos! :)</h2>
-		</p:fieldset>
+		</div>
+		</div>
+	</p:fieldset>
+</h:panelGroup>
+
+
+	
+<h:panelGroup rendered="#{controladorCliente.cliente.nome==null}" >
+	<p:fieldset class="fieldsetTitulo" style= "background: none">
+	<div class ="topnav">
+		<div class = "titulo">
+			<h1>Bem-vindo ao site da loja!</h1>
+			<h2>fique a vontade para explorar nossos produtos! :)</h2>
+			<p:commandButton value="Entrar" action="#{controladorCliente.telaLogin()}" style="background-color:white" icon="pi pi-user" styleClass="rounded-button ui-button-info ui-button-outlined"/>
+			<p:commandButton value="Área restrita" action="#{controladorFuncionario.telaLogin()}" style="background-color:white" styleClass="rounded-button ui-button-info ui-button-outlined" icon="pi pi-lock" />
+			<img src= "./resources/imagens/104161511.png" width="180" style="text-align:right;" />
+		</div>	
+	</div>
+	</p:fieldset>
+</h:panelGroup>
+</h:form>
+
+
 <br/><br/>
 
 <h:form id="form">
-	
-
-
 	<p:fieldset>
     <div class="card">
         <p:carousel value="#{controladorProduto.listar()}" var="product" numVisible="5" numScroll="5">
@@ -64,7 +87,11 @@
     
     .imgLoja{
     	
-    }	
+    }
+    
+    .titulo{
+    	color: white;
+    }
     
     .product-item .product-item-content {
         border: 1px solid var(--surface-d);
@@ -79,8 +106,17 @@
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
     }
     
+   .fieldsetTitulo {
+    position: relative;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 120.01%;
+ 	[B]color: white;[/B] 
+ 	width: 100px;
+    margin:0 auto
+}
+    
     .topnav {
-  background-color: #333;
+  background-color: black;
   overflow: hidden;
 }
 
@@ -98,7 +134,7 @@
 /* Change the color of links on hover */
 .topnav a:hover {
   background-color: #ddd;
-  color: green;
+  color: white;
 }
 </style>
 </html>

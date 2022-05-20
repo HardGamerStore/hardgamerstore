@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -17,7 +17,7 @@ import com.facol.hardgamerstore.modelo.PedidoItem;
 import com.facol.hardgamerstore.modelo.Produto;
 
 @SuppressWarnings("serial")
-@RequestScoped
+@SessionScoped
 @Named("controladorPedido")
 public class ControladorPedido implements Serializable {
 

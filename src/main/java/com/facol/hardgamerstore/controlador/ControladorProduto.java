@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
@@ -20,7 +20,7 @@ import com.facol.hardgamerstore.modelo.Produto;
 
 
 @SuppressWarnings("serial")
-@RequestScoped
+@SessionScoped
 @Named("controladorProduto")
 public class ControladorProduto implements Serializable {
 
@@ -76,6 +76,10 @@ public class ControladorProduto implements Serializable {
 	        return null;
 	    }
     
+		
+	public String painel() {
+		return "/restrito/painel.xhtml?faces-redirect=true";
+	}
     
 	public String cadastrar() {
 
@@ -98,7 +102,7 @@ public class ControladorProduto implements Serializable {
 		
 		this.saveFile();
 		this.repProduto.criar(produto);
-		return "/restrito/produtoListar.xhtml";
+		return "/restrito/produtoListar.xhtml?faces-redirect=true";
 	}
 	
 	public String alterar() {

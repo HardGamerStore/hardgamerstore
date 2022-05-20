@@ -12,6 +12,12 @@
 	<h:form id="formListaProduto">
 		<p:messages id="messages" closable="true" />
 	
+		<p:fieldset>
+		<p:commandButton id="btn" value="Imprimir" icon="pi pi-print">
+    		<p:printer target="tabelaProduto" />
+		</p:commandButton>
+	</p:fieldset>
+	
 		<p:dataTable id="tabelaProduto" widgetVar="tabelaProduto" value="#{controladorProduto.listar()}" var="produto" showGridlines="true">
 			<p:column headerText="Descrição">
 				<p:outputLabel value="#{produto.descricao}"/>
@@ -36,6 +42,8 @@
 				</p:menuButton>
 			</p:column>
 		</p:dataTable>
+		<br/><br/><br/>
+		<p:commandButton value="Voltar ao painel" action="/restrito/painel.xhtml" icon="pi pi-sitemap"/>
 		
 		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
             <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>

@@ -2,8 +2,7 @@ package com.facol.hardgamerstore.controlador;
 
 import java.io.Serializable;
 import java.util.List;
-
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -16,7 +15,7 @@ import com.facol.hardgamerstore.modelo.Cliente;
 
 @SuppressWarnings("serial")
 @Named("controladorCliente")
-@RequestScoped
+@SessionScoped
 @ManagedBean
 public class ControladorCliente implements Serializable {
 
@@ -78,6 +77,10 @@ public class ControladorCliente implements Serializable {
 	public void limparCampos() {
 		this.cpf = null;
 	}
+	
+	public String telaLogin() {
+		return "/login.xhtml?faces-redirect=true";
+	}
 
 	public String encontrarPorId(Long idCliente) {
 
@@ -99,21 +102,21 @@ public class ControladorCliente implements Serializable {
 	}
 
 	public String alterar() {
-		cliente.setNome(this.nomeCliente);
-		cliente.setCpf(this.cpf);
-		cliente.setEmail(this.email);
-		cliente.setDataDeNascimento(this.dataDeNascimento);
-		cliente.setLogin(this.login);
-		cliente.setSenha(this.senha);
-		cliente.setTelefone(this.telefone);
-		cliente.setGenero(this.genero);
-		cliente.setEstado(this.estado);
-		cliente.setCidade(this.cidade);
-		cliente.setBairro(this.bairro);
-		cliente.setLogradouro(this.logradouro);
+		cliente.setNome(this.cliente.getNome());
+		cliente.setCpf(this.cliente.getCpf());
+		cliente.setEmail(this.cliente.getEmail());
+		cliente.setDataDeNascimento(this.cliente.getDataDeNascimento());
+		cliente.setLogin(this.cliente.getLogin());
+		cliente.setSenha(this.cliente.getSenha());
+		cliente.setTelefone(this.cliente.getTelefone());
+		cliente.setGenero(this.cliente.getGenero());
+		cliente.setEstado(this.cliente.getEstado());
+		cliente.setCidade(this.cliente.getCidade());
+		cliente.setBairro(this.cliente.getBairro());
+		cliente.setLogradouro(this.cliente.getLogradouro());
 
 		this.repCliente.alterar(cliente);
-		return "/restrito/listaClientes.xhtml?faces-redirect=true";
+		return "/index.xhtml?faces-redirect=true";
 	}
 
 	public String login() {

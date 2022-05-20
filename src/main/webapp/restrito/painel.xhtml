@@ -9,8 +9,55 @@
 
 <h:body>
 
-<h1>Deu bom</h1>
+<p:fieldset>
+<div class = "bem-vindo">
+	<h1>Bem-vindo, #{controladorFuncionario.login}</h1>
+	<h2>Este é o seu painel de gerenciamento :)</h2>
+</div>
 
+<div class="card">
+    <h:form class = "menuGerencial">
+        <h5>Horizontal</h5>
+        <p:megaMenu orientation="horizontal" autoDisplay="false">
+            <p:submenu label="Produtos" icon="pi pi-fw pi-shopping-bag">
+                <p:column>
+                    <p:submenu label="Ações">
+                    	<p:menuitem value="Cadastrar produto" action="/restrito/produtoAdd.xhtml" ajax="false" icon="pi pi-save"/>
+                		<p:menuitem value="Listar produtos" action="/restrito/produtoListar.xhtml" icon="pi pi-list"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+		
+            <p:submenu label="Clientes" icon="pi pi-fw pi-users">
+
+                <p:column>
+                    <p:submenu label="Ações">
+                		<p:menuitem value="Listar clientes" action="/restrito/listaClientes.xhtml" icon="pi pi-list"/>
+                    </p:submenu>
+                </p:column>
+             </p:submenu>
+
+            <p:submenu label="Categorias" icon="pi pi-fw pi-tags">
+                <p:column>
+                    <p:submenu label="Ações">
+                        <p:menuitem value="Cadastrar categoria" action="/restrito/cadastrarCategoria.xhtml" ajax="false" icon="pi pi-save"/>
+                		<p:menuitem value="Listar categorias" action="/restrito/listarCategoria.xhtml" icon="pi pi-list"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+
+            <p:submenu label="Configurações" icon="pi pi-fw pi-cog">
+                <p:column>
+                    <p:submenu label="Ações">
+                        <p:menuitem value="Sair" action="#{controladorCliente.logOut()}" ajax="false" icon="pi pi-sign-out"/>
+                    </p:submenu>
+                </p:column>
+            </p:submenu>
+        </p:megaMenu>
+	</h:form>
+</div>
+</p:fieldset>
 </h:body>
 
 </html>

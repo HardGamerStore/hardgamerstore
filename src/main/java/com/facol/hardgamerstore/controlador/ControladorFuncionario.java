@@ -2,7 +2,7 @@ package com.facol.hardgamerstore.controlador;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -14,7 +14,7 @@ import com.facol.hardgamerstore.modelo.Funcionario;
 
 @SuppressWarnings("serial")
 @Named("controladorFuncionario")
-@RequestScoped
+@SessionScoped
 @ManagedBean
 public class ControladorFuncionario implements Serializable{
 	

@@ -13,6 +13,12 @@
 	<h:form id="formListaCliente">
 		<p:messages id="messages" closable="true" />
 		
+	<p:fieldset>
+		<p:commandButton id="btn" value="Imprimir" icon="pi pi-print">
+    		<p:printer target="tabelaCliente" />
+		</p:commandButton>
+	</p:fieldset>
+		
 		<p:dataTable id="tabelaCliente" widgetVar="tabelaCliente"  
 			value="#{controladorCliente.listar()}" var="cliente" paginator="true" rows="10" showGridlines="true">
 			
@@ -54,7 +60,6 @@
 			
 			<p:column headerText="Gerenciamento">
 				<p:menuButton value="Ações" buttonStyleClass="ui-button-outlined">
-					<p:menuitem value="Alterar" update="formListaCliente:tabelaCliente" action="#{controladorCliente.encontrarPorId(cliente.id)}" icon="pi pi-refresh"/>
 					<p:menuitem value="Deletar" update="formListaCliente:tabelaCliente" action="#{controladorCliente.remover(cliente)}" icon="pi pi-times"/>
 				</p:menuButton>
 			</p:column>
@@ -64,8 +69,7 @@
 		
 		<br/><br/><br/>
 		
-		<p:commandButton action="/index.xhtml" ajax="false" 
-			value="Ir para home" />
+		<p:commandButton value="Voltar ao painel" action="/restrito/painel.xhtml" icon="pi pi-sitemap"/>
 		
 		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
             <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>

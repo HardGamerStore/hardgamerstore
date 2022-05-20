@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.facol.hardgamerstore.modelo.Categoria;
+import com.facol.hardgamerstore.modelo.Cliente;
 
 @Stateless
 public class RepositorioCategoria {
@@ -32,7 +33,6 @@ public class RepositorioCategoria {
 		
 		return result;
 	}
-
 	
 	public void remover(Categoria categoria) {
 		Query query = this.entityManager.createQuery("FROM Categoria entity WHERE entity.id = :id");

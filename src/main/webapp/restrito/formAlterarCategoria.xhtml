@@ -4,7 +4,7 @@
 	xmlns:p="http://primefaces.org/ui" >
 
 <h:head>
-	<title>Cadastro de categoria</title>
+	<title>Edição de categoria</title>
 </h:head>
 
 <h:body>
@@ -20,11 +20,8 @@
 		
 		
 		<br /><br />
-		<p:commandButton action="#{controladorCategoria.salvar()}" ajax="false" 
-			 value="Salvar categoria" />
-		<br/><br/>
+		<p:commandButton action="#{controladorCategoria.alterar()}" ajax="false" icon="pi pi-pencil" value="Editar categoria" />
 		<p:commandButton value="Voltar ao painel" action="/restrito/painel.xhtml" icon="pi pi-sitemap"/>
-		
 	</h:form>
 </h:body>
 </html>

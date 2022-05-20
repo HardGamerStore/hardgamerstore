@@ -11,12 +11,18 @@
 	<h3>Lista de Pedidos</h3>
 	<h:form id="formListaPedidos">
 		<p:messages id="messages" closable="true" />
+		
+		<p:fieldset>
+		<p:commandButton id="btn" value="Imprimir" icon="pi pi-print">
+    		<p:printer target="tabelaPedido" />
+		</p:commandButton>
+	</p:fieldset>
 	
 		<p:dataTable id="tabelaPedido" widgetVar="tabelaPedido"  
 			value="#{controladorPedido.pedidos}" var="pedido" showGridlines="true">
 
 			<p:column headerText="Observações">
-				<p:outputLabel value="#{pedido.obsevacoes}"/>
+				<p:outputLabel value="#{pedido.observacoes}"/>
 			</p:column>
 			<p:column headerText="Meio De Pagamento">
 				<p:outputLabel value="#{pedido.meioDePagamento}" />
@@ -26,12 +32,12 @@
 			
 			
 			
-			<p:column headerText="Remover">
-				<p:commandLink value="Remover" 
+			<p:column headerText="Cancelar pedido">
+				<p:commandLink value="Cancelar" 
 					update="formListaProduto:tabelaProduto, formListaProduto:messages"
 					action="#{controladorProduto.remover(produto)}">
 					<p:confirm header="Confirmação" 
-						message="Você quer mesmo remover #{produto.descricao}?" 
+						message="Você quer mesmo cancelar o pedido #{produto.descricao}?" 
 						icon="pi pi-exclamation-triangle"/>
 				</p:commandLink>
 			</p:column>
