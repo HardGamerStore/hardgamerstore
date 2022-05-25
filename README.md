@@ -3,6 +3,9 @@ Alunos Responsáveis:
 Deyvid Yancey Guedes Silva,  
 Gustavo Batista Montenegro,
 Tiago Marcionilo da Silva
+
+
+A única informação a ser adicionada no banco manualmente é um funcionario.
 <!--
 **HardGamerStore/hardgamerstore** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
