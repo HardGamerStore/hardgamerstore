@@ -1,7 +1,7 @@
 ### Hi there 👋
 Alunos Responsáveis:
-Deyvid Yancey Guedes Silva  
-Gustavo Batista Montenegro
+Deyvid Yancey Guedes Silva,  
+Gustavo Batista Montenegro,
 Tiago Marcionilo da Silva
 <!--
 **HardGamerStore/hardgamerstore** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
